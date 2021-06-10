@@ -1,0 +1,5 @@
+create table student(student_name varchar(30) not null,father_name varchar(30) not null,mother_name varchar(30) not null,student_email_id varchar(20) not null,student_password varchar(15) not null,student_roll_number varchar(15) not null primary key,gender varchar(10) not null,address varchar(30) not null,city varchar(20) not null,parent_occupation varchar(20) not null,student_blood_group varchar(5) not null,student_standard varchar(4)not null,faculty_email_id varchar(30)not null,parent_mobile_number bigint not null,date_of_birth date not null, CONSTRAINT UC_student UNIQUE (student_email_id,student_password));
+
+
+
+insert into student values('K.DIVYA','R.KUMAR','K.RAJESWARI','divya@gmail.com','Divya@76','AA22BB1111','female','146,VVV NAGAR','CITY','BUSINESS','A-','X','laksram@gmail.com','9080706050','2004-06-07');

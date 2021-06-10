@@ -5,7 +5,6 @@ package in.divya.util;
 
 import static org.junit.Assert.*;
 
-
 import org.junit.Test;
 
 import in.divya.exceptions.InValidPasswordException;
