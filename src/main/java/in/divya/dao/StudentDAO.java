@@ -4,8 +4,13 @@
 package in.divya.dao;
 
 import java.sql.Connection;
+
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 import in.divya.exceptions.CannotRegisterStudentException;
 import in.divya.model.StudentDetails;
@@ -70,6 +75,126 @@ public class StudentDAO {
 			}
 		}
 
+	}
+
+	/**
+	 * Display all student List
+	 * 
+	 * @param facultyName
+	 * @return
+	 * @throws ClassNotFoundException
+	 */
+	public List<StudentDetails> findStudentsList(String facultyName) throws ClassNotFoundException {
+
+		List<StudentDetails> allStudentInformationDisplay = new ArrayList<>();
+		Connection connection = null;
+		PreparedStatement pst = null;
+		ResultSet rs = null;
+		try {
+			connection = ConnectionUtil.getConnection();
+
+			String str = "select student_name,student_roll_number from student_data where staff_email_id=? order by student_roll_number";
+			pst = connection.prepareStatement(str);
+			pst.setString(1, facultyName);
+			rs = pst.executeQuery();
+
+			while (rs.next()) {
+				StudentDetails studentInfo = new StudentDetails();
+
+				String studentName = rs.getString("student_name");
+
+				String studentRollNumber = rs.getString("student_roll_number");
+
+				/**
+				 * Store the data in model
+				 */
+
+				studentInfo.setStudentName(studentName);
+
+				studentInfo.setStudentRollNumber(studentRollNumber);
+
+				/**
+				 * StoreInformation in list.
+				 */
+
+				allStudentInformationDisplay.add(studentInfo);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			ConnectionUtil.close(rs, pst, connection);
+		}
+		return allStudentInformationDisplay;
+	}
+
+	/**
+	 * To display individual student information.
+	 * 
+	 * @param studentRollnumber
+	 * @return
+	 * @throws ClassNotFoundException
+	 */
+
+	public List<StudentDetails> findStudentInformation(String studentRollnumber) throws ClassNotFoundException {
+		List<StudentDetails> studentInformationDisplay = new ArrayList<>();
+		Connection connection = null;
+		PreparedStatement pst = null;
+		ResultSet rs = null;
+		try {
+			connection = ConnectionUtil.getConnection();
+
+			String str = "select * from student_data where student_roll_number=?";
+			pst = connection.prepareStatement(str);
+			pst.setString(1, studentRollnumber);
+			rs = pst.executeQuery();
+
+			while (rs.next()) {
+				StudentDetails individualStudentInfo = new StudentDetails();
+
+				String studentName = rs.getString("student_name");
+				String fatherName = rs.getString("father_name");
+				String motherName = rs.getString("mother_name");
+				String studentEmailID = rs.getString("student_email_id");
+				String studentRollNumber = rs.getString("student_roll_number");
+				String gender = rs.getString("gender");
+				String studentAddress = rs.getString("address");
+				String studentCity = rs.getString("city");
+				String occupation = rs.getString("parent_occupation");
+				String studentBloodGroup = rs.getString("student_blood_group");
+				String studentStandard = rs.getString("student_standard");
+				Long parentMobileNumber = Long.parseLong(rs.getString("parent_mobile_number"));
+				LocalDate dateOfBirth = LocalDate.parse(rs.getString("date_of_birth"));
+
+				/**
+				 * Store the data in model
+				 */
+
+				individualStudentInfo.setStudentName(studentName);
+				individualStudentInfo.setFatherName(fatherName);
+				individualStudentInfo.setMotherName(motherName);
+				individualStudentInfo.setStudentEmailId(studentEmailID);
+				individualStudentInfo.setStudentRollNumber(studentRollNumber);
+				individualStudentInfo.setGender(gender);
+				individualStudentInfo.setStudentAddress(studentAddress);
+				individualStudentInfo.setStudentCity(studentCity);
+				individualStudentInfo.setOccupation(occupation);
+				individualStudentInfo.setStudentBloodGroup(studentBloodGroup);
+				individualStudentInfo.setStudentStandard(studentStandard);
+				individualStudentInfo.setParentMobileNumber(parentMobileNumber);
+				individualStudentInfo.setDateOfBirth(dateOfBirth);
+
+				/**
+				 * StoreInformation in list.
+				 */
+
+				studentInformationDisplay.add(individualStudentInfo);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			ConnectionUtil.close(rs, pst, connection);
+		}
+		return studentInformationDisplay;
 	}
 
 }

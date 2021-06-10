@@ -1,5 +1,7 @@
 package in.divya.service;
 
+import java.util.List;
+
 import in.divya.dao.StudentDAO;
 import in.divya.exceptions.CannotRegisterStudentException;
 import in.divya.model.StudentDetails;
@@ -29,6 +31,31 @@ public class StudentService {
 			throw new CannotRegisterStudentException("ALREADY REGISTERED");
 
 		}
+	}
+
+	/**
+	 * To display Students List
+	 * 
+	 * @param facultyEmailId
+	 * @return
+	 * @throws ClassNotFoundException
+	 */
+	public List<StudentDetails> studentsList(String facultyEmailId) throws ClassNotFoundException {
+		StudentDAO studentDAO = new StudentDAO();
+		return studentDAO.findStudentsList(facultyEmailId);
+
+	}
+
+	/**
+	 * To display student information.
+	 * 
+	 * @param studentRollnumber
+	 * @return
+	 * @throws ClassNotFoundException
+	 */
+	public List<StudentDetails> studentInformation(String studentRollnumber) throws ClassNotFoundException {
+		StudentDAO studentDAO = new StudentDAO();
+		return studentDAO.findStudentInformation(studentRollnumber);
 	}
 
 }
