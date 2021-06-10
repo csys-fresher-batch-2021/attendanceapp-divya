@@ -58,4 +58,25 @@ public class StudentService {
 		return studentDAO.findStudentInformation(studentRollnumber);
 	}
 
+	/**
+	 * If it is true......Login sucessfully. otherwise it is failed
+	 * 
+	 * @throws ClassNotFoundException
+	 */
+
+	public boolean studentValidation(String studentName, String studentRollNumber, String studentPassword)
+			throws ClassNotFoundException {
+		StudentDAO studentDetailDAO = new StudentDAO();
+		boolean isValidStudentCredentials = false;
+		List<String> studentCredetials = studentDetailDAO.findStudentData();
+		/**
+		 * If it is true......Login sucessfully. otherwise it is failed
+		 */
+		if (studentCredetials.contains(studentName) && studentCredetials.contains(studentRollNumber)
+				&& studentCredetials.contains(studentPassword)) {
+			isValidStudentCredentials = true;
+		}
+		return isValidStudentCredentials;
+	}
+
 }

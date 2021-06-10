@@ -109,7 +109,7 @@ public class StudentRegisterServlet extends HttpServlet {
 			 */
 			if (isAddedStudent) {
 				String message = "SUCCESSFULLY REGISTERED";
-				response.sendRedirect("StudentRegister.jsp?infoMessage=" + message);
+				response.sendRedirect("studentRegister.jsp?infoMessage=" + message);
 
 			} else {
 				throw new CannotRegisterStudentException("Cannot register student");
@@ -118,7 +118,7 @@ public class StudentRegisterServlet extends HttpServlet {
 
 		} catch (Exception e) {
 			e.printStackTrace();
-			RequestDispatcher rd = request.getRequestDispatcher("StudentRegister.jsp?errorMessage=" + e.getMessage());
+			RequestDispatcher rd = request.getRequestDispatcher("studentRegister.jsp?errorMessage=" + e.getMessage());
 			rd.forward(request, response);
 
 		}
