@@ -1,1 +1,3 @@
-# maven-web-project-template
+# ATTENDANCE APP
+
+* FEATURE 1 : FACULTY LOGIN
