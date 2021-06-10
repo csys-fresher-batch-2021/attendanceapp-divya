@@ -52,7 +52,7 @@ public class FacultyLoginServlet extends HttpServlet {
 				HttpSession session = request.getSession();
 				session.setAttribute("LOGGED_IN_USER", facultyName);
 				session.setAttribute("LOGGED_IN_USER_ID", facultyEmailId);
-				RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
+				RequestDispatcher rd = request.getRequestDispatcher("facultyHomePage.jsp");
 				rd.forward(request, response);
 			} else {
 				throw new InValidCredentialsException("InValid Faculty Credentials");
