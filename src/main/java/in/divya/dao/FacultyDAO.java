@@ -28,7 +28,7 @@ public class FacultyDAO {
 	 * @throws SQLException
 	 * @throws ClassNotFoundException
 	 */
-	public List<String> facultyCredentialData() throws SQLException, ClassNotFoundException {
+	public List<String> findFacultyData() throws SQLException, ClassNotFoundException {
 
 		List<String> facultyCredetials = new ArrayList<>();
 		Connection connection = null;

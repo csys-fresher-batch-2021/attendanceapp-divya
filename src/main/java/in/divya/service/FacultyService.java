@@ -35,7 +35,7 @@ public class FacultyService {
 			throws SQLException, ClassNotFoundException {
 		FacultyDAO facultyDAO = new FacultyDAO();
 		boolean isValidFacultyCredentials = false;
-		List<String> facultyCredetials = facultyDAO.facultyCredentialData();
+		List<String> facultyCredetials = facultyDAO.findFacultyData();
 		/**
 		 * If it is true......Login sucessfully. otherwise it is failed
 		 */

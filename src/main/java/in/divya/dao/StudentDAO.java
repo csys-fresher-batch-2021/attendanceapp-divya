@@ -80,11 +80,11 @@ public class StudentDAO {
 	/**
 	 * Display all student List
 	 * 
-	 * @param facultyName
+	 * @param facultyEmailId
 	 * @return
 	 * @throws ClassNotFoundException
 	 */
-	public List<StudentDetails> findStudentsList(String facultyName) throws ClassNotFoundException {
+	public List<StudentDetails> findStudentsList(String facultyEmailId) throws ClassNotFoundException {
 
 		List<StudentDetails> allStudentInformationDisplay = new ArrayList<>();
 		Connection connection = null;
@@ -93,9 +93,9 @@ public class StudentDAO {
 		try {
 			connection = ConnectionUtil.getConnection();
 
-			String str = "select student_name,student_roll_number from student_data where staff_email_id=? order by student_roll_number";
+			String str = "select student_name,student_roll_number from student where faculty_email_id=? order by student_roll_number";
 			pst = connection.prepareStatement(str);
-			pst.setString(1, facultyName);
+			pst.setString(1, facultyEmailId);
 			rs = pst.executeQuery();
 
 			while (rs.next()) {
@@ -143,7 +143,7 @@ public class StudentDAO {
 		try {
 			connection = ConnectionUtil.getConnection();
 
-			String str = "select * from student_data where student_roll_number=?";
+			String str = "select * from student where student_roll_number=?";
 			pst = connection.prepareStatement(str);
 			pst.setString(1, studentRollnumber);
 			rs = pst.executeQuery();
@@ -195,6 +195,43 @@ public class StudentDAO {
 			ConnectionUtil.close(rs, pst, connection);
 		}
 		return studentInformationDisplay;
+	}
+
+	/**
+	 * This method returns a list of student credentials required for login purpose.
+	 * 
+	 * @return
+	 * @throws ClassNotFoundException
+	 */
+
+	public List<String> findStudentData() throws ClassNotFoundException {
+
+		List<String> studentCredentials = new ArrayList<>();
+		Connection connection = null;
+		PreparedStatement pst = null;
+		ResultSet rs = null;
+		try {
+
+			connection = ConnectionUtil.getConnection();
+
+			String sql = "select student_name,student_roll_number,student_password from student";
+			pst = connection.prepareStatement(sql);
+			rs = pst.executeQuery();
+
+			while (rs.next()) {
+				String studentName = rs.getString("student_name");
+				String studentRollNumber = rs.getString("student_roll_number");
+				String studentPassword = rs.getString("student_password");
+				studentCredentials.add(studentName);
+				studentCredentials.add(studentRollNumber);
+				studentCredentials.add(studentPassword);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			ConnectionUtil.close(rs, pst, connection);
+		}
+		return studentCredentials;
 	}
 
 }
