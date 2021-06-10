@@ -4,7 +4,7 @@
 <%@page import="in.divya.model.StudentDetails"%>
 <%@page import="java.util.List"%>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="ISO-8859-1">
 <title>StudentInformation</title>
