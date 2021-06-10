@@ -28,7 +28,7 @@ String loggedInUsername = (String) session.getAttribute("LOGGED_IN_USER");
 					href="facultyLogin.jsp">STUDENT</a></li>
 				<li class="nav-item"><a class="nav-link"
 					href="facultyLogin.jsp">FACULTY</a></li>
-				<li class="nav-item"><a class="nav-link" href="">REGISTER</a></li>
+				<li class="nav-item"><a class="nav-link" href="StudentRegister.jsp">REGISTER</a></li>
 				<%
 				} else {
 				%>
