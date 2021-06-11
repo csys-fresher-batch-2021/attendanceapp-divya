@@ -8,7 +8,7 @@
 <html lang="en">
 <head>
 <meta charset="ISO-8859-1">
-<title>AttendancePage</title>
+<title>Attendance Modify Page</title>
 <%
 String facultyId = (String) session.getAttribute("LOGGED_IN_USER_ID");
 if (facultyId == null) {
@@ -46,7 +46,7 @@ h4 {
 	<jsp:include page="header.jsp"></jsp:include>
 	<main class="container-fluid">
 		<a href="facultyHomePage.jsp">Previous page</a><br />
-		<!-- Attendance Portal-->
+		<!-- Attendance Modify Portal-->
 		<figure>
 			<figcaption>
 				<h2>ATTENDANCE PORTAL PAGE</h2>
@@ -58,7 +58,7 @@ h4 {
 			StudentService studentDetailService = new StudentService();
 			List<StudentDetails> allStudentList = studentDetailService.studentsList(facultyEmailId);
 			%>
-			<form action="AttendanceAddServlet" method="post">
+			<form action="AttendanceModifyServlet" method="post">
 				<label for="date">DATE : </label> <input type="date"
 					name="dateOfAttendance" id="dateOfAttendance" min="2021-01-01"
 					max="2021-12-31" value="<%=LocalDate.now()%>" required> <br />
@@ -86,13 +86,13 @@ h4 {
 							<td><input type="radio"
 								name="attendance_<%=allInfo.getStudentRollNumber()%>"
 								data-student-rollNo="<%=allInfo.getStudentRollNumber()%>"
-								value="PRESENT" required></td>
+								value="PRESENT"></td>
 							<td><input type="radio"
 								name="attendance_<%=allInfo.getStudentRollNumber()%>"
-								value="ABSENT" required></td>
+								value="ABSENT"></td>
 							<td><input type="radio"
 								name="attendance_<%=allInfo.getStudentRollNumber()%>"
-								value="ONDUTY" required></td>
+								value="ONDUTY"></td>
 						</tr>
 						<%
 						}
@@ -108,7 +108,7 @@ h4 {
 					</tbody>
 				</table>
 				<br />
-				<button class="button">SUBMIT</button>
+				<button class="button">EDIT</button>
 				<br /> <br />
 				<%
 				String errorMessage = request.getParameter("errorMessage");

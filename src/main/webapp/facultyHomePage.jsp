@@ -38,14 +38,11 @@ h3 {
 					<th scope="col">ATTENDANCE</th>
 					<th scope="col">
 						<button type="button" class="btn btn-primary"
-							onclick="window.location.href='http://localhost:8080/app/markAttendance.jsp'">ADD
-							ATTENDANCE</button>
+							onclick="window.location.href='http://localhost:8080/app/markAttendance.jsp'">MARK
+						</button>
 						<button type="button" class="btn btn-primary"
-							onclick="window.location.href='http://localhost:8080/app/modifyAttendance.jsp'">UPDATE
-							ATTENDANCE</button>
-						<button type="button" class="btn btn-primary"
-							onclick="window.location.href='http://localhost:8080/app/viewAttendance.jsp'">VIEW
-							ATTENDANCE</button>
+							onclick="window.location.href='http://localhost:8080/app/modifyAttendance.jsp'">EDIT
+						</button>
 					</th>
 				</tr>
 			</table>
