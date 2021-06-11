@@ -4,6 +4,7 @@
 package in.divya.service;
 
 import java.util.List;
+import java.util.Map;
 
 import in.divya.dao.AttendanceDAO;
 import in.divya.exceptions.CannotAddAttendanceException;
@@ -59,6 +60,45 @@ public class AttendanceService {
 		} catch (Exception e) {
 			throw new CannotAddAttendanceException("ATTENDANCE RECORD NOT FOUND");
 		}
+	}
+
+	/**
+	 * Display student attendance.
+	 * 
+	 * @param studentRollNumber
+	 * @return
+	 * @throws ClassNotFoundException
+	 */
+	public List<AttendanceDetails> studentAttendance(String studentRollNumber) throws ClassNotFoundException {
+		AttendanceDAO attendanceDAO = new AttendanceDAO();
+		return attendanceDAO.findStudentAttendance(studentRollNumber);
+
+	}
+
+	/**
+	 * To display the count of attendance type.
+	 * 
+	 * @param studentRollNumber
+	 * @return
+	 * @throws ClassNotFoundException
+	 */
+	public Map<String, Integer> attendanceTypeCount(String studentRollNumber) throws ClassNotFoundException {
+		AttendanceDAO attendanceDAO = new AttendanceDAO();
+		return attendanceDAO.findAttendanceTypeCount(studentRollNumber);
+
+	}
+
+	/**
+	 * To display the count of attendance.
+	 * 
+	 * @param studentRollNumber
+	 * @return
+	 * @throws ClassNotFoundException
+	 */
+	public int attendanceCount(String studentRollNumber) throws ClassNotFoundException {
+		AttendanceDAO attendanceDAO = new AttendanceDAO();
+		return attendanceDAO.findAttendanceCount(studentRollNumber);
+
 	}
 
 }
