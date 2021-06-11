@@ -66,7 +66,7 @@ public class StudentLoginServlet extends HttpServlet {
 				throw new InValidCredentialsException("Invalid Student Credentials");
 			}
 		} catch (Exception e) {
-			RequestDispatcher rd = request.getRequestDispatcher("studentLoginPage.jsp?errorMessage=" + e.getMessage());
+			RequestDispatcher rd = request.getRequestDispatcher("studentLogin.jsp?errorMessage=" + e.getMessage());
 			rd.forward(request, response);
 
 		}

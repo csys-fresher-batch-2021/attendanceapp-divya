@@ -34,6 +34,20 @@ h3 {
 							STUDENTS LIST</button>
 					</th>
 				</tr>
+				<tr>
+					<th scope="col">ATTENDANCE</th>
+					<th scope="col">
+						<button type="button" class="btn btn-primary"
+							onclick="window.location.href='http://localhost:8080/app/markAttendance.jsp'">ADD
+							ATTENDANCE</button>
+						<button type="button" class="btn btn-primary"
+							onclick="window.location.href='http://localhost:8080/app/modifyAttendance.jsp'">UPDATE
+							ATTENDANCE</button>
+						<button type="button" class="btn btn-primary"
+							onclick="window.location.href='http://localhost:8080/app/viewAttendance.jsp'">VIEW
+							ATTENDANCE</button>
+					</th>
+				</tr>
 			</table>
 		</figure>
 	</main>
