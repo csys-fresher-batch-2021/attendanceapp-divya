@@ -55,8 +55,8 @@ h4 {
 
 			<%
 			String facultyEmailId = (String) session.getAttribute("LOGGED_IN_USER_ID");
-			StudentService studentDetailService = new StudentService();
-			List<StudentDetails> allStudentList = studentDetailService.studentsList(facultyEmailId);
+			StudentService studentService = new StudentService();
+			List<StudentDetails> allStudentList = studentService.studentsList(facultyEmailId);
 			%>
 			<form action="AttendanceModifyServlet" method="post">
 				<label for="date">DATE : </label> <input type="date"

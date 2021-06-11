@@ -135,7 +135,7 @@ public class AttendanceDAO {
 	}
 
 	/**
-	 * Display Attendance Status Count.
+	 * Display Attendance Type Count.
 	 * 
 	 * @param studentRollNumber
 	 * @return
@@ -193,6 +193,149 @@ public class AttendanceDAO {
 
 			pst = connection.prepareStatement(sql);
 			pst.setObject(1, studentRollNumber);
+			rs = pst.executeQuery();
+			rs.next();
+			count = rs.getInt(1);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			ConnectionUtil.close(rs, pst, connection);
+		}
+		return count;
+	}
+
+	/**
+	 * All Attendance Display.
+	 * 
+	 * @return
+	 * @throws ClassNotFoundException
+	 */
+	public List<AttendanceDetails> findAllAttendance() throws ClassNotFoundException {
+		List<AttendanceDetails> allAttendanceData = new ArrayList<>();
+
+		Connection connection = null;
+		PreparedStatement pst = null;
+		ResultSet rs = null;
+		try {
+
+			connection = ConnectionUtil.getConnection();
+			String sql = "select * from attendance order by student_roll_number asc";
+			pst = connection.prepareStatement(sql);
+			rs = pst.executeQuery();
+			while (rs.next()) {
+				AttendanceDetails attendance = new AttendanceDetails();
+
+				LocalDate attendanceDate = LocalDate.parse(rs.getString("attendance_date"));
+				String studentRollNumber = rs.getString("student_roll_number");
+				String attendanceType = rs.getString("attendance");
+				attendance.setDate(attendanceDate);
+				attendance.setStudentRollNumber(studentRollNumber);
+				attendance.setAttendance(attendanceType);
+				allAttendanceData.add(attendance);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			ConnectionUtil.close(rs, pst, connection);
+		}
+		return allAttendanceData;
+	}
+
+	/**
+	 * To display day attendance.
+	 * 
+	 * @param date
+	 * @return
+	 * @throws ClassNotFoundException
+	 */
+	public List<AttendanceDetails> findAttendanceByDate(LocalDate date) throws ClassNotFoundException {
+		List<AttendanceDetails> dateAttendance = new ArrayList<>();
+
+		Connection connection = null;
+		PreparedStatement pst = null;
+		ResultSet rs = null;
+		try {
+
+			connection = ConnectionUtil.getConnection();
+
+			String sql = "select * from attendance where attendance_date=? order by student_roll_number asc";
+
+			pst = connection.prepareStatement(sql);
+			pst.setObject(1, date);
+			rs = pst.executeQuery();
+
+			while (rs.next()) {
+				AttendanceDetails allAttendance = new AttendanceDetails();
+
+				String studentRollNumber = rs.getString("student_roll_number");
+				LocalDate attendanceDate = LocalDate.parse(rs.getString("attendance_date"));
+				String attendanceStatus = rs.getString("attendance");
+				allAttendance.setStudentRollNumber(studentRollNumber);
+				allAttendance.setDate(attendanceDate);
+				allAttendance.setAttendance(attendanceStatus);
+
+				dateAttendance.add(allAttendance);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			ConnectionUtil.close(rs, pst, connection);
+		}
+		return dateAttendance;
+
+	}
+
+	/**
+	 * To display day attendance type count.
+	 * 
+	 * @param date
+	 * @return
+	 * @throws ClassNotFoundException
+	 */
+	public Map<String, Integer> findTypeCountByDate(LocalDate date) throws ClassNotFoundException {
+		Map<String, Integer> attendanceCount = new HashMap<>();
+
+		Connection connection = null;
+		PreparedStatement pst = null;
+		ResultSet rs = null;
+		try {
+			connection = ConnectionUtil.getConnection();
+			String sql = "select attendance, count(*) as cnt from attendance where attendance_date=? group by attendance";
+			pst = connection.prepareStatement(sql);
+			pst.setObject(1, date);
+			rs = pst.executeQuery();
+			while (rs.next()) {
+				String status = rs.getString("attendance");
+				Integer cnt = rs.getInt("cnt");
+				attendanceCount.put(status, cnt);
+
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			ConnectionUtil.close(rs, pst, connection);
+		}
+		return attendanceCount;
+
+	}
+
+	/**
+	 * To display count the number of students from day attendance.
+	 * 
+	 * @param date
+	 * @return
+	 * @throws ClassNotFoundException
+	 */
+	public int findStudentCount(LocalDate date) throws ClassNotFoundException {
+		Connection connection = null;
+		PreparedStatement pst = null;
+		ResultSet rs = null;
+		int count = 0;
+		try {
+			connection = ConnectionUtil.getConnection();
+			String sql = "select count(*) from attendance where attendance_date=?";
+			pst = connection.prepareStatement(sql);
+			pst.setObject(1, date);
 			rs = pst.executeQuery();
 			rs.next();
 			count = rs.getInt(1);

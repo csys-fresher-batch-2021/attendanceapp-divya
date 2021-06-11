@@ -43,6 +43,9 @@ h3 {
 						<button type="button" class="btn btn-primary"
 							onclick="window.location.href='http://localhost:8080/app/modifyAttendance.jsp'">EDIT
 						</button>
+						<button type="button" class="btn btn-primary"
+							onclick="window.location.href='http://localhost:8080/app/allAttendanceDisplay.jsp'">VIEW
+						</button>
 					</th>
 				</tr>
 			</table>
