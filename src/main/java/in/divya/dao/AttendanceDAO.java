@@ -52,4 +52,40 @@ public class AttendanceDAO {
 
 	}
 
+	/**
+	 * To update student Attendance in database.
+	 * 
+	 * @param attendance
+	 * @throws ClassNotFoundException
+	 * @throws CannotAddAttendanceException
+	 */
+	public void updateAttendance(AttendanceDetails attendance)
+			throws ClassNotFoundException, CannotAddAttendanceException {
+		PreparedStatement pst = null;
+		Connection connection = null;
+		int rs = 0;
+
+		try {
+			connection = ConnectionUtil.getConnection();
+			String sql = "update attendance set attendance=? where attendance_date=? and student_roll_number=?";
+
+			pst = connection.prepareStatement(sql);
+			pst.setString(1, attendance.getAttendance());
+			pst.setObject(2, attendance.getDate());
+			pst.setString(3, attendance.getStudentRollNumber());
+			pst.executeUpdate();
+
+			rs = pst.executeUpdate();
+			if (rs == 0) {
+				throw new CannotAddAttendanceException("ATTENDANCE RECORD NOT FOUND");
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			ConnectionUtil.close(pst, connection);
+		}
+
+	}
+
 }

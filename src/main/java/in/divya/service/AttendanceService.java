@@ -40,4 +40,25 @@ public class AttendanceService {
 		}
 	}
 
+	/**
+	 * To update all student attendance.
+	 * 
+	 * @param attendanceList
+	 * @return
+	 * @throws CannotAddAttendanceException
+	 */
+
+	public boolean modifyAttendance(List<AttendanceDetails> attendanceList) throws CannotAddAttendanceException {
+		AttendanceDAO attendanceDAO = new AttendanceDAO();
+		boolean isAddedAttendance = true;
+		try {
+			for (AttendanceDetails attendance : attendanceList) {
+				attendanceDAO.updateAttendance(attendance);
+			}
+			return isAddedAttendance;
+		} catch (Exception e) {
+			throw new CannotAddAttendanceException("ATTENDANCE RECORD NOT FOUND");
+		}
+	}
+
 }

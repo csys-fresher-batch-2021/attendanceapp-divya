@@ -1,7 +1,6 @@
 package in.divya.servlet;
 
 import java.io.IOException;
-
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -20,21 +19,21 @@ import in.divya.service.AttendanceService;
 import in.divya.util.DateValidatorUtil;
 
 /**
- * Servlet implementation class AttendanceAddServlet
+ * Servlet implementation class AttendanceModifyServlet
  */
-@WebServlet("/AttendanceAddServlet")
-public class AttendanceAddServlet extends HttpServlet {
+@WebServlet("/AttendanceModifyServlet")
+public class AttendanceModifyServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public AttendanceAddServlet() {
+	public AttendanceModifyServlet() {
 		super();
 	}
 
 	/**
-	 * To get values from jsp and passing to service.
+	 * Modify attendance process.
 	 * 
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
 	 *      response)
@@ -42,7 +41,6 @@ public class AttendanceAddServlet extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
 		AttendanceService attendanceService = new AttendanceService();
 		try {
 			String date = request.getParameter("dateOfAttendance");
@@ -63,23 +61,24 @@ public class AttendanceAddServlet extends HttpServlet {
 				}
 
 			}
-			boolean isAddedAttendance = attendanceService.addAttendance(attendanceList);
+			boolean isAddedAttendance = attendanceService.modifyAttendance(attendanceList);
 
 			if (isAddedAttendance) {
-				String message = "SUCCESSFULLY ATTENDANCE ENTERED";
-				response.sendRedirect("markAttendance.jsp?infoMessage=" + message);
+				String message = "SUCCESSFULLY ATTENDANCE CHANGED";
+				response.sendRedirect("modifyAttendance.jsp?infoMessage=" + message);
 
 			} else {
-				throw new CannotAddAttendanceException("CANNOT MARK  ATTENDANCE");
+				throw new CannotAddAttendanceException("CANNOT CHANGE");
 
 			}
 
 		} catch (Exception e) {
 			e.printStackTrace();
-			RequestDispatcher rd = request.getRequestDispatcher("markAttendance.jsp?errorMessage=" + e.getMessage());
+			RequestDispatcher rd = request.getRequestDispatcher("modifyAttendance.jsp?errorMessage=" + e.getMessage());
 			rd.forward(request, response);
 
 		}
+
 	}
 
 }
