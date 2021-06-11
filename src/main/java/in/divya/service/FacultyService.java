@@ -3,8 +3,6 @@
  */
 package in.divya.service;
 
-import java.sql.SQLException;
-
 import java.util.List;
 
 import in.divya.dao.FacultyDAO;
@@ -27,12 +25,11 @@ public class FacultyService {
 	 * @param facultyEmailId
 	 * @param facultyPassword
 	 * @return
-	 * @throws SQLException
 	 * @throws ClassNotFoundException
 	 */
 
 	public boolean facultyValidation(String facultyName, String facultyEmailId, String facultyPassword)
-			throws SQLException, ClassNotFoundException {
+			throws ClassNotFoundException {
 		FacultyDAO facultyDAO = new FacultyDAO();
 		boolean isValidFacultyCredentials = false;
 		List<String> facultyCredetials = facultyDAO.findFacultyData();

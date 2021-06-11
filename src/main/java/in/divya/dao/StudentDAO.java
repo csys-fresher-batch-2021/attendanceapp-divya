@@ -234,4 +234,31 @@ public class StudentDAO {
 		return studentCredentials;
 	}
 
+	/**
+	 * To remove student from the database.
+	 * 
+	 * @param studentRollNumber
+	 * @return
+	 * @throws ClassNotFoundException
+	 */
+
+	public boolean removeStudent(String studentRollNumber) throws ClassNotFoundException {
+		Connection connection = null;
+		PreparedStatement pst = null;
+		boolean isDeleted = false;
+		try {
+			connection = ConnectionUtil.getConnection();
+			String str = "delete from student where student_roll_number=?";
+			pst = connection.prepareStatement(str);
+			pst.setString(1, studentRollNumber);
+			pst.executeUpdate();
+			isDeleted = true;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			ConnectionUtil.close(pst, connection);
+		}
+		return isDeleted;
+	}
+
 }

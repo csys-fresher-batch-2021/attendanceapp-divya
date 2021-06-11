@@ -25,10 +25,9 @@ public class FacultyDAO {
 	 * To validate faculty login.
 	 * 
 	 * @return
-	 * @throws SQLException
 	 * @throws ClassNotFoundException
 	 */
-	public List<String> findFacultyData() throws SQLException, ClassNotFoundException {
+	public List<String> findFacultyData() throws ClassNotFoundException {
 
 		List<String> facultyCredetials = new ArrayList<>();
 		Connection connection = null;
