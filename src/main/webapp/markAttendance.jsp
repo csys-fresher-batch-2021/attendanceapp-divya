@@ -9,6 +9,12 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>AttendancePage</title>
+<%
+String facultyId = (String) session.getAttribute("LOGGED_IN_USER_ID");
+if (facultyId == null) {
+	response.sendRedirect("facultyLogin.jsp");
+}
+%>
 <style>
 form {
 	text-align: center;

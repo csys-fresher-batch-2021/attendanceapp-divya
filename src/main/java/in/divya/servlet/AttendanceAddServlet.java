@@ -48,7 +48,7 @@ public class AttendanceAddServlet extends HttpServlet {
 			String date = request.getParameter("dateOfAttendance");
 			LocalDate attendanceDate = DateValidatorUtil.isDateFormatOrNot(date, "InValid Date Format");
 			DateValidatorUtil.isNotAFutureDate(attendanceDate, "Date cannot be a future date");
-			List<AttendanceDetails> attendanceList = new ArrayList<AttendanceDetails>();
+			List<AttendanceDetails> attendanceList = new ArrayList<>();
 			for (Entry<String, String[]> entry : request.getParameterMap().entrySet()) {
 				String name = entry.getKey();
 				String value = entry.getValue()[0];
