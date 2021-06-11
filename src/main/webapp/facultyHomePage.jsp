@@ -15,7 +15,7 @@ h3 {
 <body>
 	<jsp:include page="header.jsp"></jsp:include>
 	<main class="container-fluid">
-		<!-- This page display the topics of Student information -->
+		<!-- This page display the student home page -->
 		<figure>
 			<figcaption>Student Information</figcaption>
 			<br />
@@ -49,3 +49,4 @@ h3 {
 		</figure>
 	</main>
 </body>
+</html>
