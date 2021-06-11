@@ -63,7 +63,7 @@ h4 {
 							href="studentInformation.jsp?allInfo=<%=allInfo.getStudentRollNumber()%>">VIEW
 						</a></td>
 						<td><a
-							href="StudentIndividualAttendanceDisplay.jsp?allInfo=<%=allInfo.getStudentRollNumber()%>">VIEW
+							href="studentIndividualAttendance.jsp?allInfo=<%=allInfo.getStudentRollNumber()%>">VIEW
 						</a></td>
 						<td><a
 							href="StudentRemoveServlet?allInfo=<%=allInfo.getStudentRollNumber()%> "
