@@ -27,7 +27,7 @@ h4 {
 		<!-- Display All Student Information-->
 		<figure>
 			<figcaption>
-				<h3>DIVVLEARN SCHOOL</h3>
+				<h3>DIVVLEARN SECONDARY SCHOOL</h3>
 				<br />
 			</figcaption>
 

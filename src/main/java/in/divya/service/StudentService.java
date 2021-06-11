@@ -79,4 +79,17 @@ public class StudentService {
 		return isValidStudentCredentials;
 	}
 
+	/**
+	 * To delete student from the records.
+	 * 
+	 * @param studentRollNumber
+	 * @return
+	 * @throws ClassNotFoundException
+	 */
+	public boolean deleteStudent(String studentRollNumber) throws ClassNotFoundException {
+		StudentDAO studentDetailDAO = new StudentDAO();
+		return studentDetailDAO.removeStudent(studentRollNumber);
+
+	}
+
 }
