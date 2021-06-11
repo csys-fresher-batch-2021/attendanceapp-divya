@@ -3,6 +3,7 @@
  */
 package in.divya.service;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Map;
 
@@ -98,6 +99,57 @@ public class AttendanceService {
 	public int attendanceCount(String studentRollNumber) throws ClassNotFoundException {
 		AttendanceDAO attendanceDAO = new AttendanceDAO();
 		return attendanceDAO.findAttendanceCount(studentRollNumber);
+
+	}
+
+	/**
+	 * To display All attendance
+	 * 
+	 * @return
+	 * @throws ClassNotFoundException
+	 */
+	public List<AttendanceDetails> displayAllAttendance() throws ClassNotFoundException {
+		AttendanceDAO attendanceDAO = new AttendanceDAO();
+		return attendanceDAO.findAllAttendance();
+
+	}
+	
+	/**
+	 * Display Day attendance.
+	 * 
+	 * @param date
+	 * @return
+	 * @throws ClassNotFoundException
+	 */
+	public List<AttendanceDetails> allAttendance(LocalDate date) throws ClassNotFoundException {
+		AttendanceDAO attendanceDAO = new AttendanceDAO();
+		return attendanceDAO.findAttendanceByDate(date);
+
+	}
+
+	/**
+	 * To display the count of attendance type.
+	 * 
+	 * @param date
+	 * @return
+	 * @throws ClassNotFoundException
+	 */
+	public Map<String, Integer> allAttendanceTypeCount(LocalDate date) throws ClassNotFoundException {
+		AttendanceDAO attendanceDAO = new AttendanceDAO();
+		return attendanceDAO.findTypeCountByDate(date);
+
+	}
+
+	/**
+	 * To display the count of student
+	 * 
+	 * @param date
+	 * @return
+	 * @throws ClassNotFoundException
+	 */
+	public int studentCount(LocalDate date) throws ClassNotFoundException {
+		AttendanceDAO attendanceDAO = new AttendanceDAO();
+		return attendanceDAO.findStudentCount(date);
 
 	}
 
