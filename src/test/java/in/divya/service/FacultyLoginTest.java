@@ -5,8 +5,6 @@ package in.divya.service;
 
 import static org.junit.Assert.*;
 
-import java.sql.SQLException;
-
 import org.junit.Test;
 
 /**
@@ -20,12 +18,11 @@ public class FacultyLoginTest {
 	/**
 	 * Both are Valid
 	 * 
-	 * @throws SQLException
 	 * @throws ClassNotFoundException
 	 */
 
 	@Test
-	public void isBothValidTestCase() throws ClassNotFoundException, SQLException {
+	public void isBothValidTestCase() throws ClassNotFoundException {
 		String facultyName = "M.LAKSHMI";
 		String facultyEmailId = "laksram@gmail.com";
 		String facultyPassword = "Rlakshmi@123";
@@ -36,12 +33,11 @@ public class FacultyLoginTest {
 	/**
 	 * InValid name and Valid emailId,password
 	 * 
-	 * @throws SQLException
 	 * @throws ClassNotFoundException
 	 */
 
 	@Test
-	public void isNameInValidTestCase() throws ClassNotFoundException, SQLException {
+	public void isNameInValidTestCase() throws ClassNotFoundException {
 		String facultyName = "SELVA";
 		String facultyEmailId = "laksram@gmail.com";
 		String facultyPassword = "Rlakshmi@123";
@@ -52,12 +48,11 @@ public class FacultyLoginTest {
 	/**
 	 * Valid name,emailID and InValid password
 	 * 
-	 * @throws SQLException
 	 * @throws ClassNotFoundException
 	 */
 
 	@Test
-	public void isPasswordInValidTestCase() throws ClassNotFoundException, SQLException {
+	public void isPasswordInValidTestCase() throws ClassNotFoundException {
 		String facultyName = "M.LAKSHMI";
 		String facultyEmailId = "laksram@gmail.com";
 		String facultyPassword = "RLaks@123";
@@ -68,12 +63,11 @@ public class FacultyLoginTest {
 	/**
 	 * Both are InValid
 	 * 
-	 * @throws SQLException
 	 * @throws ClassNotFoundException
 	 */
 
 	@Test
-	public void isBothInvalidTestCase() throws ClassNotFoundException, SQLException {
+	public void isBothInvalidTestCase() throws ClassNotFoundException {
 		String facultyName = "RAMYA";
 		String facultyEmailId = "laks@gmail.com";
 		String facultyPassword = "Ramya@56";
