@@ -6,6 +6,7 @@ package in.divya.service;
 import java.util.List;
 
 import in.divya.dao.FacultyDAO;
+import in.divya.model.FacultyDetails;
 
 /**
  * @author divy2624
@@ -41,6 +42,19 @@ public class FacultyService {
 			isValidFacultyCredentials = true;
 		}
 		return isValidFacultyCredentials;
+
+	}
+
+	/**
+	 * To display faculty details.
+	 * 
+	 * @param studentRollNumber
+	 * @return
+	 * @throws ClassNotFoundException
+	 */
+	public List<FacultyDetails> displayFacultyDetails(String studentRollNumber) throws ClassNotFoundException {
+		FacultyDAO facultyDAO = new FacultyDAO();
+		return facultyDAO.findFacultyById(studentRollNumber);
 
 	}
 

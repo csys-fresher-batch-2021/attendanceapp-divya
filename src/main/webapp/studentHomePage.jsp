@@ -5,6 +5,12 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Student Home Page</title>
+<%
+String rollNumber = (String) session.getAttribute("LOGGED_IN_USER_NO");
+if (rollNumber == null) {
+	response.sendRedirect("studentLogin.jsp");
+}
+%>
 <style>
 h3 {
 	color: blue;
@@ -20,6 +26,7 @@ h3 {
 			<figcaption>Student Information</figcaption>
 			<br />
 			<%
+			String studentRollNumber = (String) session.getAttribute("LOGGED_IN_USER_NO");
 			String studentName = (String) session.getAttribute("LOGGED_IN_USER");
 			out.println("<h3>WELCOME " + studentName + "</h3><br/>");
 			%>
@@ -33,7 +40,12 @@ h3 {
 							onclick="window.location.href='http://localhost:8080/app/displayAttendance.jsp'">
 							VIEW ATTENDANCE</button>
 					</th>
-				</tr>	
+					<th scope="col">ATTENDANCE INCHARGE</th>
+					<th scope="col">
+						<button type="button" class="btn btn-primary"
+							onclick="window.location.href='http://localhost:8080/app/facultyContact.jsp?studentRollNumber=<%=studentRollNumber%>'">CONTACT INFO</button>
+					</th>
+				</tr>
 			</table>
 		</figure>
 	</main>
