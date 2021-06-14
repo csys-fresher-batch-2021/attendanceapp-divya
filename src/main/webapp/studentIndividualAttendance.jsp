@@ -3,6 +3,7 @@
 <%@page import="in.divya.service.AttendanceService"%>
 <%@page import="in.divya.model.AttendanceDetails"%>
 <%@page import="java.util.List"%>
+<%@page import="java.time.format.DateTimeFormatter"%>
 <%@page import="java.util.Map"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -79,7 +80,7 @@ h4 {
 							i++;
 					%>
 					<tr>
-						<td><%=attendance.getDate()%></td>
+						<td><%=attendance.getDate().format(DateTimeFormatter.ofPattern("dd-MM-yyyy"))%></td>
 						<td><%=attendance.getAttendance()%></td>
 
 					</tr>

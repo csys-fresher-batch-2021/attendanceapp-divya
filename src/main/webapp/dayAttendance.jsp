@@ -5,6 +5,7 @@
 <%@page import="java.util.List"%>
 <%@page import="java.util.Map"%>
 <%@page import="java.time.LocalDate"%>
+<%@page import="java.time.format.DateTimeFormatter"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -82,7 +83,7 @@ h4 {
 					%>
 					<tr>
 						<td><%=attendance.getStudentRollNumber()%></td>
-						<td><%=attendance.getDate()%></td>
+						<td><%=attendance.getDate().format(DateTimeFormatter.ofPattern("dd-MM-yyyy"))%></td>
 						<td><%=attendance.getAttendance()%></td>
 
 					</tr>

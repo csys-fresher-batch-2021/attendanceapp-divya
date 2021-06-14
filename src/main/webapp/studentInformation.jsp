@@ -3,6 +3,7 @@
 <%@page import="in.divya.service.StudentService"%>
 <%@page import="in.divya.model.StudentDetails"%>
 <%@page import="java.util.List"%>
+<%@page import="java.time.format.DateTimeFormatter"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -91,7 +92,7 @@ h3 {
 					</tr>
 					<tr>
 						<th scope="row">DATE OF BIRTH</th>
-						<td><%= studentInfo.getDateOfBirth() %></td>
+						<td><%= studentInfo.getDateOfBirth().format(DateTimeFormatter.ofPattern("dd-MM-yyyy")) %></td>
 					</tr>
 				</tbody>
 			</table>
