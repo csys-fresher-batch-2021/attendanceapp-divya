@@ -4,8 +4,13 @@
 package in.divya.dao;
 
 import java.sql.Connection;
+
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 import in.divya.exceptions.InValidCredentialsException;
 import in.divya.model.ReasonDetails;
@@ -52,4 +57,40 @@ public class ReasonDAO {
 
 	}
 
+	/**
+	 * To display all reasons.
+	 * 
+	 * @return
+	 * @throws ClassNotFoundException
+	 */
+	public List<ReasonDetails> findAllReasons() throws ClassNotFoundException {
+		List<ReasonDetails> allReasonsData = new ArrayList<>();
+		Connection connection = null;
+		PreparedStatement pst = null;
+		ResultSet rs = null;
+		try {
+
+			connection = ConnectionUtil.getConnection();
+			String sql = "select * from reason order by attendance_date desc";
+			pst = connection.prepareStatement(sql);
+			rs = pst.executeQuery();
+			while (rs.next()) {
+				ReasonDetails reason = new ReasonDetails();
+				String studentRollNumber = rs.getString("student_roll_number");
+				LocalDate attendanceDate = LocalDate.parse(rs.getString("attendance_date"));
+				String attendanceType = rs.getString("attendance_type");
+				String typeReason = rs.getString("reason");
+				reason.setStudentRollNumber(studentRollNumber);
+				reason.setDate(attendanceDate);
+				reason.setAttendanceType(attendanceType);
+				reason.setReason(typeReason);
+				allReasonsData.add(reason);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			ConnectionUtil.close(rs, pst, connection);
+		}
+		return allReasonsData;
+	}
 }

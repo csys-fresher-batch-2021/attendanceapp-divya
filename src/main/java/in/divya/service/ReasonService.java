@@ -3,6 +3,8 @@
  */
 package in.divya.service;
 
+import java.util.List;
+
 import in.divya.dao.ReasonDAO;
 import in.divya.exceptions.InValidCredentialsException;
 import in.divya.model.ReasonDetails;
@@ -34,5 +36,17 @@ public class ReasonService {
 		} catch (Exception e) {
 			throw new InValidCredentialsException("ALREADY EXISTS");
 		}
+	}
+
+	/**
+	 * To display all reasons.
+	 * 
+	 * @return
+	 * @throws ClassNotFoundException
+	 */
+	public List<ReasonDetails> displayAllReasons() throws ClassNotFoundException {
+		ReasonDAO reasonDAO = new ReasonDAO();
+		return reasonDAO.findAllReasons();
+
 	}
 }
