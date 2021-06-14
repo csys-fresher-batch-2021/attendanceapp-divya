@@ -5,6 +5,7 @@ package in.divya.dao;
 
 import java.sql.Connection;
 
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -111,7 +112,7 @@ public class AttendanceDAO {
 
 			connection = ConnectionUtil.getConnection();
 
-			String sql = "select * from attendance where student_roll_number=? order by student_roll_number asc";
+			String sql = "select * from attendance where student_roll_number=? order by attendance_date desc";
 
 			pst = connection.prepareStatement(sql);
 			pst.setString(1, studentRollNumber);
@@ -219,7 +220,7 @@ public class AttendanceDAO {
 		try {
 
 			connection = ConnectionUtil.getConnection();
-			String sql = "select * from attendance order by student_roll_number asc";
+			String sql = "select * from attendance order by attendance_date desc";
 			pst = connection.prepareStatement(sql);
 			rs = pst.executeQuery();
 			while (rs.next()) {
@@ -346,5 +347,4 @@ public class AttendanceDAO {
 		}
 		return count;
 	}
-
 }

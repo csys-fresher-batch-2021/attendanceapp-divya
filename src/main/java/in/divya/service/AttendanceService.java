@@ -4,6 +4,7 @@
 package in.divya.service;
 
 import java.time.LocalDate;
+
 import java.util.List;
 import java.util.Map;
 
@@ -113,7 +114,7 @@ public class AttendanceService {
 		return attendanceDAO.findAllAttendance();
 
 	}
-	
+
 	/**
 	 * Display Day attendance.
 	 * 
@@ -152,5 +153,4 @@ public class AttendanceService {
 		return attendanceDAO.findStudentCount(date);
 
 	}
-
 }

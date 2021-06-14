@@ -3,7 +3,6 @@
 <%@page import="in.divya.service.AttendanceService"%>
 <%@page import="in.divya.model.AttendanceDetails"%>
 <%@page import="java.util.List"%>
-<%@page import="java.util.Map"%>
 <%@page import="java.time.LocalDate"%>
 <%@page import="java.time.format.DateTimeFormatter"%>
 <!DOCTYPE html>

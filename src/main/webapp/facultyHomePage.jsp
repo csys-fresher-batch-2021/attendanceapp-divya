@@ -51,6 +51,8 @@ h3 {
 					<th scope="col">REASON INFORMATION</th>
 					<th scope="col">
 						<button type="button" class="btn btn-primary"
+							onclick="window.location.href='http://localhost:8080/app/viewReason.jsp?'">REASON</button>
+						<button type="button" class="btn btn-primary"
 							onclick="window.location.href='http://localhost:8080/app/reasonInformationAdd.jsp?'">ADD</button>
 					</th>
 				</tr>
