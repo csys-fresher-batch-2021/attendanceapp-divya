@@ -40,10 +40,19 @@ h3 {
 							onclick="window.location.href='http://localhost:8080/app/displayAttendance.jsp'">
 							VIEW ATTENDANCE</button>
 					</th>
+				</tr>
+				<tr>
 					<th scope="col">ATTENDANCE INCHARGE</th>
 					<th scope="col">
 						<button type="button" class="btn btn-primary"
 							onclick="window.location.href='http://localhost:8080/app/facultyContact.jsp?studentRollNumber=<%=studentRollNumber%>'">CONTACT INFO</button>
+					</th>
+				</tr>
+				<tr>
+					<th scope="col">REASON INFORMATION</th>
+					<th scope="col">
+						<button type="button" class="btn btn-primary"
+							onclick="window.location.href='http://localhost:8080/app/reasonInformation.jsp?'">INFORM</button>
 					</th>
 				</tr>
 			</table>
