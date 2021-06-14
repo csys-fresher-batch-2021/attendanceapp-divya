@@ -18,6 +18,12 @@ h4 {
 	color: black;
 	text-align: center;
 }
+
+p {
+	color: brown;
+	text-align: center;
+}
+
 </style>
 </head>
 <body>
@@ -30,6 +36,13 @@ h4 {
 				<h3>DIVVLEARN SECONDARY SCHOOL</h3>
 				<br />
 			</figcaption>
+			
+			<%
+			String infoMessage = request.getParameter("infoMessage");
+			if (infoMessage != null) {
+				out.println("<p>" + infoMessage + "</p>");
+			}
+			%>
 
 			<%
 			String facultyEmailId = (String) session.getAttribute("LOGGED_IN_USER_ID");

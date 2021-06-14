@@ -39,11 +39,11 @@ public class StudentRemoveServlet extends HttpServlet {
 			boolean isRemoved = studentService.deleteStudent(studentRollNumber);
 			if (isRemoved) {
 				RequestDispatcher rd = request.getRequestDispatcher(
-						"listOfStudents.jsp?infoMessage=SuccessFully Deleted Student - " + studentRollNumber);
+						"listOfStudents.jsp?infoMessage=SUCCESSFULLY DELETED STUDENT - " + studentRollNumber);
 				rd.forward(request, response);
 			} else {
 				RequestDispatcher rd = request.getRequestDispatcher(
-						"listOfStudents.jsp?errorMessage=Cannot Delete Student - " + studentRollNumber);
+						"listOfStudents.jsp?errorMessage=CANNOT DELETE STUDENT - " + studentRollNumber);
 				rd.forward(request, response);
 			}
 		} catch (ClassNotFoundException e) {
