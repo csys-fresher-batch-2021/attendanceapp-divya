@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@page import="in.divya.service.ReasonService"%>
-<%@page import="in.divya.model.AbsentDetails"%>
+<%@page import="in.divya.model.ReportDetails"%>
 <%@page import="in.divya.model.FacultyDetails"%>
 <%@page import="java.util.List"%>
 <%@page import="java.time.LocalDate"%>
@@ -88,8 +88,8 @@ h3 {
 				<tbody>
 					<%
 					ReasonService reasonService = new ReasonService();
-					List<FacultyDetails> facultyData = reasonService.displayFacultyDetails(facultyId);
-					for (FacultyDetails faculty : facultyData) {
+								List<FacultyDetails> facultyData = reasonService.displayFacultyDetails(facultyId);
+								for (FacultyDetails faculty : facultyData) {
 					%>
 					<tr>
 						<td><%=faculty.getFacultyName()%></td>
@@ -115,11 +115,11 @@ h3 {
 				</thead>
 				<tbody>
 					<%
-					List<AbsentDetails> absentData = reasonService.displayAbsentReport(facultyId);
-					if (absentData != null && !absentData.isEmpty()) {
-						int i = 1;
-						for (AbsentDetails absent : absentData) {
-							i++;
+					List<ReportDetails> absentData = reasonService.displayAbsentReport(facultyId);
+								if (absentData != null && !absentData.isEmpty()) {
+									int i = 1;
+									for (ReportDetails absent : absentData) {
+										i++;
 					%>
 					<tr>
 						<td><%=absent.getReason().getStudentRollNumber()%></td>

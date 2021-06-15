@@ -7,7 +7,7 @@ package in.divya.model;
  * @author divy2624
  *
  */
-public class AbsentDetails {
+public class ReportDetails {
 	private StudentDetails student;
 	private ReasonDetails reason;
 

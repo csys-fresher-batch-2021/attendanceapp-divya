@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import in.divya.exceptions.InValidCredentialsException;
-import in.divya.model.AbsentDetails;
+import in.divya.model.ReportDetails;
 import in.divya.model.FacultyDetails;
 import in.divya.model.ReasonDetails;
 import in.divya.model.StudentDetails;
@@ -107,8 +107,8 @@ public class ReasonDAO {
 	 * @return
 	 * @throws ClassNotFoundException
 	 */
-	public List<AbsentDetails> findALLAbsent(String facultyId) throws ClassNotFoundException {
-		List<AbsentDetails> absentReportDetails = new ArrayList<>();
+	public List<ReportDetails> findALLAbsent(String facultyId) throws ClassNotFoundException {
+		List<ReportDetails> absentReportDetails = new ArrayList<>();
 		Connection connection = null;
 		PreparedStatement pst = null;
 		ResultSet rs = null;
@@ -121,7 +121,7 @@ public class ReasonDAO {
 			while (rs.next()) {
 				StudentDetails student = new StudentDetails();
 				ReasonDetails reason = new ReasonDetails();
-				AbsentDetails absentDetails = new AbsentDetails();
+				ReportDetails absentDetails = new ReportDetails();
 				reason.setStudentRollNumber(rs.getString("student_roll_number"));
 				student.setStudentName(rs.getString("student_name"));
 				reason.setDate(LocalDate.parse(rs.getString("attendance_date")));
@@ -189,8 +189,8 @@ public class ReasonDAO {
 	 * @return
 	 * @throws ClassNotFoundException
 	 */
-	public List<AbsentDetails> findALLOnDuty(String facultyId) throws ClassNotFoundException {
-		List<AbsentDetails> absentReportDetails = new ArrayList<>();
+	public List<ReportDetails> findALLOnDuty(String facultyId) throws ClassNotFoundException {
+		List<ReportDetails> absentReportDetails = new ArrayList<>();
 		Connection connection = null;
 		PreparedStatement pst = null;
 		ResultSet rs = null;
@@ -203,7 +203,7 @@ public class ReasonDAO {
 			while (rs.next()) {
 				StudentDetails student = new StudentDetails();
 				ReasonDetails reason = new ReasonDetails();
-				AbsentDetails absentDetails = new AbsentDetails();
+				ReportDetails absentDetails = new ReportDetails();
 				reason.setStudentRollNumber(rs.getString("student_roll_number"));
 				student.setStudentName(rs.getString("student_name"));
 				reason.setDate(LocalDate.parse(rs.getString("attendance_date")));
