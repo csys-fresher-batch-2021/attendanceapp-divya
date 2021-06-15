@@ -10,7 +10,7 @@
 <html lang="en">
 <head>
 <meta charset="ISO-8859-1">
-<title>ABSENT REPORT</title>
+<title>ONDUTY REPORT</title>
 <%
 String facultyId = (String) session.getAttribute("LOGGED_IN_USER_ID");
 if (facultyId == null) {
@@ -54,24 +54,24 @@ h3 {
 	<jsp:include page="header.jsp"></jsp:include>
 	<main class="container-fluid">
 		<a href="facultyHomePage.jsp">Previous page</a><br />
-		<!-- Display Absent Report -->
+		<!-- Display onduty Report -->
 		<figure>
 			<figcaption>
 				<h2>DIVVLEARN SECONDARY SCHOOL</h2>
 				<button onclick="window.print()">DOWNLOAD</button>
 			</figcaption>
 			<br />
-			<label>STUDENT ABSENT REPORT : </label>
-			<input type="text" id="myInput" onkeyup="myFunction()"
+			<label>STUDENT ONDUTY REPORT : </label>
+			<input type="text" id="myInput" onkeyup="studentOnDuty()"
 				placeholder="SEARCH FOR STUDENT" title="Type in a name">
-			<label> DAILY ABSENT REPORT : </label>
-			<input type="text" id="myInput1" onkeyup="myFunction1()"
+			<label> DAILY ONDUTY REPORT : </label>
+			<input type="text" id="myInput1" onkeyup="dateOnDuty()"
 				placeholder="SEARCH FOR DATE" title="Type in a date">
 			<br />
 			<table border="1" class="table">
 				<thead class="thead-dark">
 					<tr>
-						<td colspan="6"><h3>ABSENT REPORT</h3></td>
+						<td colspan="6"><h3>ONDUTY REPORT</h3></td>
 					</tr>
 					<tr>
 						<th scope="col" colspan="4" style="text-align: center">INCHARGE
@@ -115,7 +115,7 @@ h3 {
 				</thead>
 				<tbody>
 					<%
-					List<ReportDetails> absentData = reasonService.displayAbsentReport(facultyId);
+					List<ReportDetails> absentData = reasonService.displayOnDutyReport(facultyId);
 								if (absentData != null && !absentData.isEmpty()) {
 									int i = 1;
 									for (ReportDetails absent : absentData) {
@@ -143,7 +143,7 @@ h3 {
 				</tbody>
 			</table>
 			<script>
-				function myFunction() {
+				function studentOnDuty() {
 					var input, filter, table, tr, td, i, txtValue;
 					input = document.getElementById("myInput");
 					filter = input.value.toUpperCase();
@@ -161,7 +161,7 @@ h3 {
 						}
 					}
 				}
-				function myFunction1() {
+				function dateOnDuty() {
 					var input, filter, table, tr, td, i, txtValue;
 					input = document.getElementById("myInput1");
 					filter = input.value.toUpperCase();
@@ -184,4 +184,3 @@ h3 {
 	</main>
 </body>
 </html>
-

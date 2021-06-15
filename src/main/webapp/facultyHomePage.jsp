@@ -63,6 +63,9 @@ h3 {
 						<button type="button" class="btn btn-primary"
 							onclick="window.location.href='http://localhost:8080/app/absentReport.jsp'">ABSENT
 							REPORT</button>
+						<button type="button" class="btn btn-primary"
+							onclick="window.location.href='http://localhost:8080/app/onDutyReport.jsp'">ONDUTY
+							REPORT</button>
 					</th>
 				</tr>
 			</table>
