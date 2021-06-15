@@ -101,7 +101,7 @@ public class ReasonDAO {
 	}
 
 	/**
-	 * To display Absent Report.
+	 * To display absent details.
 	 * 
 	 * @param facultyId
 	 * @return

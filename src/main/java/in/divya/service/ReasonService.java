@@ -75,6 +75,5 @@ public class ReasonService {
 	public List<FacultyDetails> displayFacultyDetails(String facultyId) throws ClassNotFoundException {
 		ReasonDAO reasonDAO = new ReasonDAO();
 		return reasonDAO.findFacultyById(facultyId);
-
 	}
 }

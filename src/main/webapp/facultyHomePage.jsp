@@ -61,7 +61,8 @@ h3 {
 					<th scope="col">REPORTS</th>
 					<th scope="col">
 						<button type="button" class="btn btn-primary"
-							onclick="window.location.href='http://localhost:8080/app/absentReport.jsp'">ABSENT REPORT</button>
+							onclick="window.location.href='http://localhost:8080/app/absentReport.jsp'">ABSENT
+							REPORT</button>
 					</th>
 				</tr>
 			</table>
