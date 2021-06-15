@@ -243,7 +243,7 @@ public class ReasonDAO {
 			pst = connection.prepareStatement(str);
 			pst.setString(1, studentRollNumber);
 			pst.setObject(2, date);
-			pst.executeUpdate();
+			rs=pst.executeUpdate();
 			if (rs == 0) {
 				throw new InValidCredentialsException("REASON NOT EXISTS");
 			}
