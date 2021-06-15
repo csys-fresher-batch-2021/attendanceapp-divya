@@ -220,6 +220,37 @@ public class ReasonDAO {
 			ConnectionUtil.close(rs, pst, connection);
 		}
 		return absentReportDetails;
-		
+
+	}
+
+	/**
+	 * To remove reasons.
+	 * 
+	 * @param studentRollNumber
+	 * @param date
+	 * @return
+	 * @throws ClassNotFoundException
+	 * @throws InValidCredentialsException
+	 */
+	public void removeReason(String studentRollNumber, LocalDate date)
+			throws ClassNotFoundException, InValidCredentialsException {
+		Connection connection = null;
+		PreparedStatement pst = null;
+		int rs = 0;
+		try {
+			connection = ConnectionUtil.getConnection();
+			String str = "delete from reason where student_roll_number=? and attendance_date=?";
+			pst = connection.prepareStatement(str);
+			pst.setString(1, studentRollNumber);
+			pst.setObject(2, date);
+			pst.executeUpdate();
+			if (rs == 0) {
+				throw new InValidCredentialsException("REASON NOT EXISTS");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			ConnectionUtil.close(pst, connection);
+		}
 	}
 }

@@ -3,6 +3,7 @@
  */
 package in.divya.service;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import in.divya.dao.ReasonDAO;
@@ -75,7 +76,7 @@ public class ReasonService {
 		ReasonDAO reasonDAO = new ReasonDAO();
 		return reasonDAO.findFacultyById(facultyId);
 	}
-	
+
 	/**
 	 * To display onduty report.
 	 * 
@@ -87,4 +88,26 @@ public class ReasonService {
 		ReasonDAO reasonDAO = new ReasonDAO();
 		return reasonDAO.findALLOnDuty(facultyId);
 	}
+
+	/**
+	 * To delete reasons.
+	 * 
+	 * @param studentRollNumber
+	 * @param date
+	 * @return
+	 * @throws ClassNotFoundException
+	 * @throws InValidCredentialsException
+	 */
+	public boolean deleteReason(String studentRollNumber, LocalDate date)
+			throws ClassNotFoundException, InValidCredentialsException {
+		ReasonDAO reasonDAO = new ReasonDAO();
+		boolean isRemoveReason = true;
+		try {
+			reasonDAO.removeReason(studentRollNumber, date);
+			return isRemoveReason;
+		} catch (Exception e) {
+			throw new InValidCredentialsException("REASON DETAIL NOT FOUND");
+		}
+	}
+
 }

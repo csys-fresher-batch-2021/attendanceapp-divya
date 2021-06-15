@@ -48,6 +48,10 @@ h3 {
 	color: black;
 	text-align: center;
 }
+h4 {
+	color: black;
+	text-align: center;
+}
 </style>
 </head>
 <body style="background-color: pink">
@@ -135,7 +139,7 @@ h3 {
 					} else {
 					%>
 					<tr>
-						<td colspan="6"><h4>REASONS NOT FOUND</h4></td>
+						<td colspan="6"><h4>REPORT NOT FOUND</h4></td>
 					</tr>
 					<%
 					}

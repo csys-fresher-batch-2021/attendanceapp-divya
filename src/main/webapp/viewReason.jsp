@@ -36,6 +36,26 @@ h4 {
 				<h2>REASONS FOR ABSENT AND ONDUTY</h2>
 				<br />
 			</figcaption>
+			<form action="ReasonRemoveServlet" method="post">
+				<label>STUDENT ROLL NUMBER : </label> <input type="text"
+					name="rollNumber" id="rollNumber"
+					placeholder="ENTER STUDENT ROLL NUMBER" required> <label
+					for="date">DATE : </label> <input type="date" name="dateOfReason"
+					id="dateOfReason" min="2021-01-01" max="2021-12-31"
+					value="<%=LocalDate.now()%>" required>
+				<button class="button">REMOVE</button>
+				<br />
+				<%
+				String infoMessage = request.getParameter("infoMessage");
+				if (infoMessage != null) {
+					out.println("<font color='brown'>" + infoMessage + "</font>");
+				}
+				String errorMessage = request.getParameter("errorMessage");
+				if (errorMessage != null) {
+					out.println("<font color='brown'>" + errorMessage + "</font>");
+				}
+				%>
+			</form>
 			<br />
 			<table border="1" class="table">
 				<thead class="thead-dark">
