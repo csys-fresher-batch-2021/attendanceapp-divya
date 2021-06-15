@@ -76,4 +76,17 @@ public class ReasonService {
 		ReasonDAO reasonDAO = new ReasonDAO();
 		return reasonDAO.findFacultyById(facultyId);
 	}
+	
+	/**
+	 * To display onduty report.
+	 * 
+	 * @param facultyId
+	 * @return
+	 * @throws ClassNotFoundException
+	 */
+	public List<AbsentDetails> displayOnDutyReport(String facultyId) throws ClassNotFoundException {
+		ReasonDAO reasonDAO = new ReasonDAO();
+		List<AbsentDetails> absentDetails = reasonDAO.findALLOnDuty(facultyId);
+		return absentDetails;
+	}
 }

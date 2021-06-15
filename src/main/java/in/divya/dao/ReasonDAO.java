@@ -181,4 +181,45 @@ public class ReasonDAO {
 		}
 		return facultyData;
 	}
+
+	/**
+	 * To display onduty details
+	 * 
+	 * @param facultyId
+	 * @return
+	 * @throws ClassNotFoundException
+	 */
+	public List<AbsentDetails> findALLOnDuty(String facultyId) throws ClassNotFoundException {
+		List<AbsentDetails> absentReportDetails = new ArrayList<>();
+		Connection connection = null;
+		PreparedStatement pst = null;
+		ResultSet rs = null;
+		try {
+			connection = ConnectionUtil.getConnection();
+			String sql = "select reason.student_roll_number,student.student_name,reason.attendance_date,reason.attendance_type,reason.reason,student.parent_mobile_number from reason inner join student on reason.student_roll_number=student.student_roll_number and reason.faculty_email_id=? and reason.attendance_type='ONDUTY' order by reason.attendance_date";
+			pst = connection.prepareStatement(sql);
+			pst.setString(1, facultyId);
+			rs = pst.executeQuery();
+			while (rs.next()) {
+				StudentDetails student = new StudentDetails();
+				ReasonDetails reason = new ReasonDetails();
+				AbsentDetails absentDetails = new AbsentDetails();
+				reason.setStudentRollNumber(rs.getString("student_roll_number"));
+				student.setStudentName(rs.getString("student_name"));
+				reason.setDate(LocalDate.parse(rs.getString("attendance_date")));
+				reason.setAttendanceType(rs.getString("attendance_type"));
+				reason.setReason(rs.getString("reason"));
+				student.setParentMobileNumber(Long.parseLong(rs.getString("parent_mobile_number")));
+				absentDetails.setStudent(student);
+				absentDetails.setReason(reason);
+				absentReportDetails.add(absentDetails);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			ConnectionUtil.close(rs, pst, connection);
+		}
+		return absentReportDetails;
+		
+	}
 }
