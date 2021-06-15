@@ -7,6 +7,8 @@ import java.util.List;
 
 import in.divya.dao.ReasonDAO;
 import in.divya.exceptions.InValidCredentialsException;
+import in.divya.model.AbsentDetails;
+import in.divya.model.FacultyDetails;
 import in.divya.model.ReasonDetails;
 
 /**
@@ -41,12 +43,38 @@ public class ReasonService {
 	/**
 	 * To display all reasons.
 	 * 
+	 * @param facultyId
 	 * @return
 	 * @throws ClassNotFoundException
 	 */
-	public List<ReasonDetails> displayAllReasons() throws ClassNotFoundException {
+	public List<ReasonDetails> displayAllReasons(String facultyId) throws ClassNotFoundException {
 		ReasonDAO reasonDAO = new ReasonDAO();
-		return reasonDAO.findAllReasons();
+		return reasonDAO.findAllReasons(facultyId);
+	}
+
+	/**
+	 * To display absent report.
+	 * 
+	 * @param facultyId
+	 * @return
+	 * @throws ClassNotFoundException
+	 */
+	public List<AbsentDetails> displayAbsentReport(String facultyId) throws ClassNotFoundException {
+		ReasonDAO reasonDAO = new ReasonDAO();
+		List<AbsentDetails> absentDetails = reasonDAO.findALLAbsent(facultyId);
+		return absentDetails;
+	}
+
+	/**
+	 * To display faculty details
+	 * 
+	 * @param facultyId
+	 * @return
+	 * @throws ClassNotFoundException
+	 */
+	public List<FacultyDetails> displayFacultyDetails(String facultyId) throws ClassNotFoundException {
+		ReasonDAO reasonDAO = new ReasonDAO();
+		return reasonDAO.findFacultyById(facultyId);
 
 	}
 }

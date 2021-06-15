@@ -61,7 +61,7 @@ p {
 			fetch(url,{method:'get'}).then(res=> res.json()).then(res=>{
 				let data = res;
 				console.log(data);
-				var tableData = '<thead class="thead-dark"><tr><th>INCHARGE</th><th scope="col">DETAILS</th></tr></thead>'
+				var tableData = '<thead class="thead-dark"><tr><th>INCHARGE</th><th>DETAILS</th></tr></thead>'
 					tableData+= '<tbody>'
 					    for(i = 0;i < data.length; i++){
 				    	tableData+= '<tr>';

@@ -51,6 +51,5 @@ public class FacultyContactServlet extends HttpServlet {
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		}
-
 	}
 }

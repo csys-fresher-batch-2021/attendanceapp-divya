@@ -1,7 +1,6 @@
 package in.divya.servlet;
 
 import java.io.IOException;
-
 import java.time.LocalDate;
 
 import javax.servlet.RequestDispatcher;
@@ -20,21 +19,21 @@ import in.divya.util.StringValidatorUtil;
 import in.divya.validator.RollNumberValidator;
 
 /**
- * Servlet implementation class ReasonServlet
+ * Servlet implementation class ReasonAllServlet
  */
-@WebServlet("/ReasonServlet")
-public class ReasonServlet extends HttpServlet {
+@WebServlet("/ReasonAllServlet")
+public class ReasonAllServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public ReasonServlet() {
+	public ReasonAllServlet() {
 		super();
 	}
 
 	/**
-	 * Get reason for absent or onduty
+	 * Get reason data.
 	 * 
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
 	 *      response)
@@ -64,7 +63,7 @@ public class ReasonServlet extends HttpServlet {
 			boolean isAddedStudent = reasonService.addReason(reason);
 			if (isAddedStudent) {
 				String message = "SUCCESSFULLY APPLIED";
-				response.sendRedirect("reasonInformation.jsp?infoMessage=" + message);
+				response.sendRedirect("reasonInformationAdd.jsp?infoMessage=" + message);
 
 			} else {
 				throw new InValidCredentialsException("CANNOT REASON ADDED");
@@ -73,7 +72,8 @@ public class ReasonServlet extends HttpServlet {
 
 		} catch (Exception e) {
 			e.printStackTrace();
-			RequestDispatcher rd = request.getRequestDispatcher("reasonInformation.jsp?errorMessage=" + e.getMessage());
+			RequestDispatcher rd = request
+					.getRequestDispatcher("reasonInformationAdd.jsp?errorMessage=" + e.getMessage());
 			rd.forward(request, response);
 
 		}

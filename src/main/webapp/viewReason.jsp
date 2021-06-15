@@ -48,8 +48,9 @@ h4 {
 					</tr>
 				<tbody>
 					<%
+					String facultyEmailId = (String) session.getAttribute("LOGGED_IN_USER_ID");
 					ReasonService reasonService = new ReasonService();
-					List<ReasonDetails> reasonData = reasonService.displayAllReasons();
+					List<ReasonDetails> reasonData = reasonService.displayAllReasons(facultyEmailId);
 					if (reasonData != null && !reasonData.isEmpty()) {
 						int i = 1;
 						for (ReasonDetails reason : reasonData) {

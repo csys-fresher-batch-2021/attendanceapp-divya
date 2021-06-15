@@ -20,6 +20,7 @@ h3 {
 			<figcaption>Student Information</figcaption>
 			<br />
 			<%
+			String facultyId = (String) session.getAttribute("LOGGED_IN_USER_ID");
 			String facultyName = (String) session.getAttribute("LOGGED_IN_USER");
 			out.println("<h3>WELCOME " + facultyName + "</h3><br/>");
 			%>
@@ -51,9 +52,16 @@ h3 {
 					<th scope="col">REASON INFORMATION</th>
 					<th scope="col">
 						<button type="button" class="btn btn-primary"
-							onclick="window.location.href='http://localhost:8080/app/viewReason.jsp?'">REASON</button>
+							onclick="window.location.href='http://localhost:8080/app/viewReason.jsp'">REASON</button>
 						<button type="button" class="btn btn-primary"
-							onclick="window.location.href='http://localhost:8080/app/reasonInformationAdd.jsp?'">ADD</button>
+							onclick="window.location.href='http://localhost:8080/app/reasonInformationAdd.jsp'">ADD</button>
+					</th>
+				</tr>
+				<tr>
+					<th scope="col">REPORTS</th>
+					<th scope="col">
+						<button type="button" class="btn btn-primary"
+							onclick="window.location.href='http://localhost:8080/app/absentReport.jsp'">ABSENT REPORT</button>
 					</th>
 				</tr>
 			</table>

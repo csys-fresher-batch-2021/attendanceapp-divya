@@ -43,8 +43,10 @@ h2 {
 				ABSENT
 			</label> <br /> <label for="onDuty"> <input type="radio" id="onDuty"
 				name="attendanceType" value="ONDUTY" required> ONDUTY
-			</label> <br /> <br /> <label>REASON : </label><input type="text"
-				placeholder="Enter your reason" name="reason"
+			</label> <br /> <br /> <label>FACULTY-IN-CHARGE(EMAIL-ID) : </label> <input
+				type="email" name="facultyEmailId" id="facultyEmailId"
+				placeholder="Enter StaffEmailId" required><br /> <br /> <label>REASON
+				: </label><input type="text" placeholder="Enter your reason" name="reason"
 				title="reason field should not be empty" required><br /> <br />
 			<button type="submit" class="btn btn-primary">SEND</button>
 			<br /> <br />

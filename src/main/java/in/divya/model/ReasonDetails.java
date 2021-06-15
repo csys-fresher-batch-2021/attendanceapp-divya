@@ -17,6 +17,7 @@ public class ReasonDetails {
 	private String studentRollNumber;
 	private LocalDate date;
 	private String attendanceType;
+	private String facultyEmailId;
 	private String reason;
 
 	/**
@@ -62,6 +63,20 @@ public class ReasonDetails {
 	}
 
 	/**
+	 * @return the facultyEmailId
+	 */
+	public String getFacultyEmailId() {
+		return facultyEmailId;
+	}
+
+	/**
+	 * @param facultyEmailId the facultyEmailId to set
+	 */
+	public void setFacultyEmailId(String facultyEmailId) {
+		this.facultyEmailId = facultyEmailId;
+	}
+
+	/**
 	 * @return the reason
 	 */
 	public String getReason() {
@@ -78,6 +93,6 @@ public class ReasonDetails {
 	@Override
 	public String toString() {
 		return "ReasonDetails [studentRollNumber=" + studentRollNumber + ", date=" + date + ", attendanceType="
-				+ attendanceType + ", reason=" + reason + "]";
+				+ attendanceType + ", facultyEmailId=" + facultyEmailId + ", reason=" + reason + "]";
 	}
 }
