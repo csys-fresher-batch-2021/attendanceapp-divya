@@ -76,7 +76,7 @@ public class ReasonDAO {
 		try {
 
 			connection = ConnectionUtil.getConnection();
-			String sql = "select * from reason where faculty_email_id=? order by attendance_date desc";
+			String sql = "select student_roll_number,attendance_date,attendance_type,reason from reason where faculty_email_id=? order by attendance_date desc";
 			pst = connection.prepareStatement(sql);
 			pst.setString(1, facultyId);
 			rs = pst.executeQuery();
@@ -114,9 +114,10 @@ public class ReasonDAO {
 		ResultSet rs = null;
 		try {
 			connection = ConnectionUtil.getConnection();
-			String sql = "select reason.student_roll_number,student.student_name,reason.attendance_date,reason.attendance_type,reason.reason,student.parent_mobile_number from reason inner join student on reason.student_roll_number=student.student_roll_number and reason.faculty_email_id=? and reason.attendance_type='ABSENT' order by reason.attendance_date";
+			String sql = "select reason.student_roll_number,student.student_name,reason.attendance_date,reason.attendance_type,reason.reason,student.parent_mobile_number from reason inner join student on reason.student_roll_number=student.student_roll_number and reason.faculty_email_id=? and reason.attendance_type=? order by reason.attendance_date";
 			pst = connection.prepareStatement(sql);
 			pst.setString(1, facultyId);
+			pst.setString(2, "ABSENT");
 			rs = pst.executeQuery();
 			while (rs.next()) {
 				StudentDetails student = new StudentDetails();
@@ -196,9 +197,10 @@ public class ReasonDAO {
 		ResultSet rs = null;
 		try {
 			connection = ConnectionUtil.getConnection();
-			String sql = "select reason.student_roll_number,student.student_name,reason.attendance_date,reason.attendance_type,reason.reason,student.parent_mobile_number from reason inner join student on reason.student_roll_number=student.student_roll_number and reason.faculty_email_id=? and reason.attendance_type='ONDUTY' order by reason.attendance_date";
+			String sql = "select reason.student_roll_number,student.student_name,reason.attendance_date,reason.attendance_type,reason.reason,student.parent_mobile_number from reason inner join student on reason.student_roll_number=student.student_roll_number and reason.faculty_email_id=? and reason.attendance_type=? order by reason.attendance_date";
 			pst = connection.prepareStatement(sql);
 			pst.setString(1, facultyId);
+			pst.setString(2, "ONDUTY");
 			rs = pst.executeQuery();
 			while (rs.next()) {
 				StudentDetails student = new StudentDetails();
@@ -243,7 +245,7 @@ public class ReasonDAO {
 			pst = connection.prepareStatement(str);
 			pst.setString(1, studentRollNumber);
 			pst.setObject(2, date);
-			rs=pst.executeUpdate();
+			rs = pst.executeUpdate();
 			if (rs == 0) {
 				throw new InValidCredentialsException("REASON NOT EXISTS");
 			}
