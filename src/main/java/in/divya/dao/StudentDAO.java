@@ -105,17 +105,9 @@ public class StudentDAO {
 
 				String studentRollNumber = rs.getString("student_roll_number");
 
-				/**
-				 * Store the data in model
-				 */
-
 				studentInfo.setStudentName(studentName);
 
 				studentInfo.setStudentRollNumber(studentRollNumber);
-
-				/**
-				 * StoreInformation in list.
-				 */
 
 				allStudentInformationDisplay.add(studentInfo);
 			}
@@ -143,7 +135,7 @@ public class StudentDAO {
 		try {
 			connection = ConnectionUtil.getConnection();
 
-			String str = "select * from student where student_roll_number=?";
+			String str = "select student_name,father_name,mother_name,student_email_id,student_roll_number,gender,address,city,parent_occupation,student_blood_group,student_standard,parent_mobile_number,date_of_birth from student where student_roll_number=?";
 			pst = connection.prepareStatement(str);
 			pst.setString(1, studentRollnumber);
 			rs = pst.executeQuery();
@@ -165,10 +157,6 @@ public class StudentDAO {
 				Long parentMobileNumber = Long.parseLong(rs.getString("parent_mobile_number"));
 				LocalDate dateOfBirth = LocalDate.parse(rs.getString("date_of_birth"));
 
-				/**
-				 * Store the data in model
-				 */
-
 				individualStudentInfo.setStudentName(studentName);
 				individualStudentInfo.setFatherName(fatherName);
 				individualStudentInfo.setMotherName(motherName);
@@ -182,10 +170,6 @@ public class StudentDAO {
 				individualStudentInfo.setStudentStandard(studentStandard);
 				individualStudentInfo.setParentMobileNumber(parentMobileNumber);
 				individualStudentInfo.setDateOfBirth(dateOfBirth);
-
-				/**
-				 * StoreInformation in list.
-				 */
 
 				studentInformationDisplay.add(individualStudentInfo);
 			}

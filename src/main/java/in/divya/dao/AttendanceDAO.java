@@ -111,7 +111,7 @@ public class AttendanceDAO {
 
 			connection = ConnectionUtil.getConnection();
 
-			String sql = "select * from attendance where student_roll_number=? order by attendance_date desc";
+			String sql = "select attendance_date,attendance from attendance where student_roll_number=? order by attendance_date desc";
 
 			pst = connection.prepareStatement(sql);
 			pst.setString(1, studentRollNumber);
@@ -119,7 +119,6 @@ public class AttendanceDAO {
 
 			while (rs.next()) {
 				AttendanceDetails attendance = new AttendanceDetails();
-
 				LocalDate attendanceDate = LocalDate.parse(rs.getString("attendance_date"));
 				String attendanceType = rs.getString("attendance");
 				attendance.setDate(attendanceDate);
@@ -219,7 +218,7 @@ public class AttendanceDAO {
 		try {
 
 			connection = ConnectionUtil.getConnection();
-			String sql = "select * from attendance order by attendance_date desc";
+			String sql = "select attendance_date,student_roll_number,attendance from attendance order by attendance_date desc";
 			pst = connection.prepareStatement(sql);
 			rs = pst.executeQuery();
 			while (rs.next()) {
@@ -258,7 +257,7 @@ public class AttendanceDAO {
 
 			connection = ConnectionUtil.getConnection();
 
-			String sql = "select * from attendance where attendance_date=? order by student_roll_number asc";
+			String sql = "select student_roll_number,attendance_date,attendance from attendance where attendance_date=? order by student_roll_number asc";
 
 			pst = connection.prepareStatement(sql);
 			pst.setObject(1, date);
@@ -361,10 +360,11 @@ public class AttendanceDAO {
 		double percentage = 0;
 		try {
 			connection = ConnectionUtil.getConnection();
-			String sql = "select  (Count(attendance)* 100 / (Select Count(*) From attendance where student_roll_number=?)) as percentage from attendance where attendance='PRESENT' and student_roll_number=?";
+			String sql = "select  (Count(attendance)* 100 / (Select Count(*) From attendance where student_roll_number=?)) as percentage from attendance where attendance=? and student_roll_number=?";
 			pst = connection.prepareStatement(sql);
 			pst.setString(1, studentRollNumber);
-			pst.setString(2, studentRollNumber);
+			pst.setString(2, "PRESENT");
+			pst.setString(3, studentRollNumber);
 			rs = pst.executeQuery();
 			rs.next();
 			percentage = Double.parseDouble(rs.getString("percentage"));

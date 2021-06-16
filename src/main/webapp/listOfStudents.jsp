@@ -61,7 +61,7 @@ p {
 						<th scope="col">PERSONAL INFORMATION</th>
 						<th scope="col">ATTENDANCE</th>
 						<th scope="col">PRESENT PERCENTAGE %</th>
-						<th scope="col">LEFT</th>
+						<th scope="col">DROP OUT</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -90,7 +90,7 @@ p {
 						</td>
 						<td><a
 							href="StudentRemoveServlet?allInfo=<%=allInfo.getStudentRollNumber()%> "
-							onclick="return deleteConfirmation('<%=allInfo.getStudentRollNumber()%>')">LEFT
+							onclick="return deleteConfirmation('<%=allInfo.getStudentRollNumber()%>')">DROP OUT
 						</a></td>
 					</tr>
 					<%
