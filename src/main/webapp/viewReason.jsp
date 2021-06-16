@@ -11,6 +11,11 @@
 <meta charset="ISO-8859-1">
 <title>REASON DISPLAY</title>
 <style>
+label {
+	font-weight: bold;
+	font-size: 16px;
+}
+
 form {
 	text-align: center;
 }
@@ -36,13 +41,16 @@ h4 {
 				<h2>REASONS FOR ABSENT AND ONDUTY</h2>
 				<br />
 			</figcaption>
+			<label> SEARCH DATE : </label>
+			<input type="text" id="myInput1" onkeyup="dateFunction()"
+				placeholder="ENTER DATE" title="Type in a date">
+			<br />
 			<form action="ReasonRemoveServlet" method="post">
-				<label>STUDENT ROLL NUMBER : </label> <input type="text"
-					name="rollNumber" id="rollNumber"
-					placeholder="ENTER STUDENT ROLL NUMBER" required> <label
-					for="date">DATE : </label> <input type="date" name="dateOfReason"
-					id="dateOfReason" min="2021-01-01" max="2021-12-31"
-					value="<%=LocalDate.now()%>" required>
+				REMOVE REASON : <input type="text" name="rollNumber"
+					id="rollNumber" placeholder="ENTER ROLL NUMBER" required>
+				DATE : <input type="date" name="dateOfReason" id="dateOfReason"
+					min="2021-01-01" max="2021-12-31" value="<%=LocalDate.now()%>"
+					required>
 				<button class="button">REMOVE</button>
 				<br />
 				<%
@@ -57,7 +65,7 @@ h4 {
 				%>
 			</form>
 			<br />
-			<table border="1" class="table">
+			<table border="1" class="table"  id="myTable">
 				<thead class="thead-dark">
 
 					<tr>
@@ -97,5 +105,25 @@ h4 {
 			</table>
 		</figure>
 	</main>
+	<script>
+		function dateFunction() {
+			var input, filter, table, tr, td, i, txtValue;
+			input = document.getElementById("myInput1");
+			filter = input.value.toUpperCase();
+			table = document.getElementById("myTable");
+			tr = table.getElementsByTagName("tr");
+			for (i = 0; i < tr.length; i++) {
+				td = tr[i].getElementsByTagName("td")[1];
+				if (td) {
+					txtValue = td.textContent || td.innerText;
+					if (txtValue.toUpperCase().indexOf(filter) > -1) {
+						tr[i].style.display = "";
+					} else {
+						tr[i].style.display = "none";
+					}
+				}
+			}
+		}
+	</script>
 </body>
 </html>

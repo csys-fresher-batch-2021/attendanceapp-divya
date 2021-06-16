@@ -21,7 +21,6 @@ if (facultyId == null) {
 <style>
 label {
 	font-weight: bold;
-	width: 220px;
 	font-size: 16px;
 }
 
@@ -57,20 +56,20 @@ h4 {
 <body style="background-color: pink">
 	<jsp:include page="header.jsp"></jsp:include>
 	<main class="container-fluid">
-		<a href="facultyHomePage.jsp">Previous page</a><br />
+		<a href="facultyHomePage.jsp">Previous page</a>
 		<!-- Display onduty Report -->
 		<figure>
 			<figcaption>
-				<h2>DIVVLEARN SECONDARY SCHOOL</h2>
-				<button onclick="window.print()">DOWNLOAD</button>
+				<h2>DIVVLEARN SECONDARY SCHOOL</h2><br/>
 			</figcaption>
-			<br />
-			<label>STUDENT ONDUTY REPORT : </label>
+			 <b>DOWNLOAD REPORT : </b>
+			<button onclick="window.print()">DOWNLOAD</button>
+			<label>SEARCH STUDENT : </label>
 			<input type="text" id="myInput" onkeyup="studentOnDuty()"
-				placeholder="SEARCH FOR STUDENT" title="Type in a name">
-			<label> DAILY ONDUTY REPORT : </label>
+				placeholder="ENTER ROLL NUMBER" title="Type in a roll number">
+			<label>SEARCH DATE : </label>
 			<input type="text" id="myInput1" onkeyup="dateOnDuty()"
-				placeholder="SEARCH FOR DATE" title="Type in a date">
+				placeholder="ENTER DATE" title="Type in a date">
 			<br />
 			<table border="1" class="table">
 				<thead class="thead-dark">

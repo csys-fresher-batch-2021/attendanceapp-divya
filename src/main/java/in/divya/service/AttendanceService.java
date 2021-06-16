@@ -153,4 +153,17 @@ public class AttendanceService {
 		return attendanceDAO.findStudentCount(date);
 
 	}
+
+	/**
+	 * To display present percentage
+	 * 
+	 * @param studentRollNumber
+	 * @return
+	 * @throws ClassNotFoundException
+	 */
+	public double calculatePresentPercentage(String studentRollNumber) throws ClassNotFoundException {
+		AttendanceDAO attendanceDAO = new AttendanceDAO();
+		return attendanceDAO.findPresentPercentageById(studentRollNumber);
+
+	}
 }
