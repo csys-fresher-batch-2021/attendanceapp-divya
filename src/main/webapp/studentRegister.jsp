@@ -70,7 +70,7 @@ h2 {
 			<br /> <label>FACULTY-IN-CHARGE(EMAIL-ID) : </label> <input type="email"
 				name="facultyEmailId" id="facultyEmailId"
 				placeholder="Enter StaffEmailId" required><br /> <br /> <label>
-				MOBILE NUMBER:</label> <input type="number" name="mobileNumber"
+				PARENT MOBILE NUMBER:</label> <input type="number" name="mobileNumber"
 				id="mobileNumber" placeholder="Enter Mobile Number"><br />
 			<br /> <label>DATE OF BIRTH: </label> <input type="date"
 				name="dateOfBirth" id="dateOfBirth" min="2004-01-01"

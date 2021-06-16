@@ -21,7 +21,6 @@ if (facultyId == null) {
 <style>
 label {
 	font-weight: bold;
-	width: 220px;
 	font-size: 16px;
 }
 
@@ -62,16 +61,16 @@ h4 {
 		<!-- Display Absent Report -->
 		<figure>
 			<figcaption>
-				<h2>DIVVLEARN SECONDARY SCHOOL</h2>
-				<button onclick="window.print()">DOWNLOAD</button>
+				<h2>DIVVLEARN SECONDARY SCHOOL</h2><br />
 			</figcaption>
-			<br />
-			<label>STUDENT ABSENT REPORT : </label>
-			<input type="text" id="myInput" onkeyup="myFunction()"
-				placeholder="SEARCH FOR STUDENT" title="Type in a name">
-			<label> DAILY ABSENT REPORT : </label>
-			<input type="text" id="myInput1" onkeyup="myFunction1()"
-				placeholder="SEARCH FOR DATE" title="Type in a date">
+			<strong>DOWNLOAD REPORT : </strong>
+			<button onclick="window.print()">DOWNLOAD</button>
+			<label>SEARCH STUDENT : </label>
+			<input type="text" id="myInput" onkeyup="studentAbsent()"
+				placeholder="ENTER ROLL NUMBER" title="Type in a roll number">
+			<label> SEARCH DATE : </label>
+			<input type="text" id="myInput1" onkeyup="dateAbsent()"
+				placeholder="ENTER DATE" title="Type in a date">
 			<br />
 			<table border="1" class="table">
 				<thead class="thead-dark">
@@ -148,7 +147,7 @@ h4 {
 				</tbody>
 			</table>
 			<script>
-				function myFunction() {
+				function studentAbsent() {
 					var input, filter, table, tr, td, i, txtValue;
 					input = document.getElementById("myInput");
 					filter = input.value.toUpperCase();
@@ -166,7 +165,7 @@ h4 {
 						}
 					}
 				}
-				function myFunction1() {
+				function dateAbsent() {
 					var input, filter, table, tr, td, i, txtValue;
 					input = document.getElementById("myInput1");
 					filter = input.value.toUpperCase();

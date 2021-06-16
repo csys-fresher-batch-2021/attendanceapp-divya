@@ -5,7 +5,6 @@ package in.divya.dao;
 
 import java.sql.Connection;
 
-
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -346,5 +345,34 @@ public class AttendanceDAO {
 			ConnectionUtil.close(rs, pst, connection);
 		}
 		return count;
+	}
+
+	/**
+	 * To calculate present percentage
+	 * 
+	 * @param studentRollNumber
+	 * @return
+	 * @throws ClassNotFoundException
+	 */
+	public double findPresentPercentageById(String studentRollNumber) throws ClassNotFoundException {
+		Connection connection = null;
+		PreparedStatement pst = null;
+		ResultSet rs = null;
+		double percentage = 0;
+		try {
+			connection = ConnectionUtil.getConnection();
+			String sql = "select  (Count(attendance)* 100 / (Select Count(*) From attendance where student_roll_number=?)) as percentage from attendance where attendance='PRESENT' and student_roll_number=?";
+			pst = connection.prepareStatement(sql);
+			pst.setString(1, studentRollNumber);
+			pst.setString(2, studentRollNumber);
+			rs = pst.executeQuery();
+			rs.next();
+			percentage = Double.parseDouble(rs.getString("percentage"));
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			ConnectionUtil.close(rs, pst, connection);
+		}
+		return percentage;
 	}
 }
