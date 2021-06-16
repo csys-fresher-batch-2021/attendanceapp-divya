@@ -62,7 +62,7 @@ h4 {
 			<figcaption>
 				<h2>DIVVLEARN SECONDARY SCHOOL</h2><br/>
 			</figcaption>
-			 <b>DOWNLOAD REPORT : </b>
+			 <strong>DOWNLOAD REPORT : </strong>
 			<button onclick="window.print()">DOWNLOAD</button>
 			<label>SEARCH STUDENT : </label>
 			<input type="text" id="myInput" onkeyup="studentOnDuty()"
