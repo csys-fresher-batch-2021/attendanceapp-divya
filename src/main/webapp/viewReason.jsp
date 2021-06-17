@@ -46,13 +46,11 @@ h4 {
 				placeholder="ENTER DATE" title="Type in a date">
 			<br />
 			<form action="ReasonRemoveServlet" method="post">
-				REMOVE REASON : <input type="text" name="rollNumber"
-					id="rollNumber" placeholder="ENTER ROLL NUMBER" required>
-				DATE : <input type="date" name="dateOfReason" id="dateOfReason"
-					min="2021-01-01" max="2021-12-31" value="<%=LocalDate.now()%>"
-					required>
+				REMOVE REASON : <input type="text" name="rollNumber" id="rollNumber"
+					placeholder="ENTER ROLL NUMBER" required> DATE : <input
+					type="date" name="dateOfReason" id="dateOfReason" min="2021-01-01"
+					max="2021-12-31" value="<%=LocalDate.now()%>" required>
 				<button class="button">REMOVE</button>
-				<br />
 				<%
 				String infoMessage = request.getParameter("infoMessage");
 				if (infoMessage != null) {
@@ -63,9 +61,9 @@ h4 {
 					out.println("<font color='brown'>" + errorMessage + "</font>");
 				}
 				%>
+				<br /> <br />
 			</form>
-			<br />
-			<table border="1" class="table"  id="myTable">
+			<table border="1" class="table" id="myTable">
 				<thead class="thead-dark">
 
 					<tr>

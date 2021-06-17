@@ -150,7 +150,7 @@ public class AttendanceDAO {
 
 			connection = ConnectionUtil.getConnection();
 
-			String sql = "select attendance, count(*) as cnt from attendance where student_roll_number=? group by attendance";
+			String sql = "select attendance, count(attendance) as count from attendance where student_roll_number=? group by attendance";
 
 			pst = connection.prepareStatement(sql);
 			pst.setObject(1, studentRollNumber);
@@ -158,8 +158,8 @@ public class AttendanceDAO {
 
 			while (rs.next()) {
 				String status = rs.getString("attendance");
-				Integer cnt = rs.getInt("cnt");
-				attendanceTypeCount.put(status, cnt);
+				Integer count = rs.getInt("count");
+				attendanceTypeCount.put(status, count);
 
 			}
 		} catch (SQLException e) {
@@ -188,7 +188,7 @@ public class AttendanceDAO {
 
 			connection = ConnectionUtil.getConnection();
 
-			String sql = "select count(*) from attendance where student_roll_number=?";
+			String sql = "select count(student_roll_number) from attendance where student_roll_number=?";
 
 			pst = connection.prepareStatement(sql);
 			pst.setObject(1, studentRollNumber);
@@ -299,14 +299,14 @@ public class AttendanceDAO {
 		ResultSet rs = null;
 		try {
 			connection = ConnectionUtil.getConnection();
-			String sql = "select attendance, count(*) as cnt from attendance where attendance_date=? group by attendance";
+			String sql = "select attendance, count(attendance) as count from attendance where attendance_date=? group by attendance";
 			pst = connection.prepareStatement(sql);
 			pst.setObject(1, date);
 			rs = pst.executeQuery();
 			while (rs.next()) {
 				String status = rs.getString("attendance");
-				Integer cnt = rs.getInt("cnt");
-				attendanceCount.put(status, cnt);
+				Integer count = rs.getInt("count");
+				attendanceCount.put(status, count);
 
 			}
 		} catch (SQLException e) {
@@ -332,7 +332,7 @@ public class AttendanceDAO {
 		int count = 0;
 		try {
 			connection = ConnectionUtil.getConnection();
-			String sql = "select count(*) from attendance where attendance_date=?";
+			String sql = "select count(attendance_date) from attendance where attendance_date=?";
 			pst = connection.prepareStatement(sql);
 			pst.setObject(1, date);
 			rs = pst.executeQuery();
@@ -360,7 +360,7 @@ public class AttendanceDAO {
 		double percentage = 0;
 		try {
 			connection = ConnectionUtil.getConnection();
-			String sql = "select  (Count(attendance)* 100 / (Select Count(*) From attendance where student_roll_number=?)) as percentage from attendance where attendance=? and student_roll_number=?";
+			String sql = "select  (Count(attendance)* 100 / (Select Count(student_roll_number) From attendance where student_roll_number=?)) as percentage from attendance where attendance=? and student_roll_number=?";
 			pst = connection.prepareStatement(sql);
 			pst.setString(1, studentRollNumber);
 			pst.setString(2, "PRESENT");

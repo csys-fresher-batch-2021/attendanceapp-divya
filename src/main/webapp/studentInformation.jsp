@@ -24,7 +24,7 @@ h3 {
 		<!-- Display  Student Information-->
 		<figure>
 			<figcaption>
-				<h3>DIVVLEARN SCHOOL STUDENT INFORMATION</h3>
+				<h3>DIVVLEARN STUDENT INFORMATION</h3>
 				<br />
 			</figcaption>
 			<%
