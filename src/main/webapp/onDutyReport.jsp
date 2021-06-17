@@ -47,6 +47,7 @@ h3 {
 	color: black;
 	text-align: center;
 }
+
 h4 {
 	color: black;
 	text-align: center;
@@ -60,9 +61,10 @@ h4 {
 		<!-- Display onduty Report -->
 		<figure>
 			<figcaption>
-				<h2>DIVVLEARN SECONDARY SCHOOL</h2><br/>
+				<h2>DIVVLEARN SECONDARY SCHOOL</h2>
+				<br />
 			</figcaption>
-			 <strong>DOWNLOAD REPORT : </strong>
+			<strong>DOWNLOAD REPORT : </strong>
 			<button onclick="window.print()">DOWNLOAD</button>
 			<label>SEARCH STUDENT : </label>
 			<input type="text" id="myInput" onkeyup="studentOnDuty()"
@@ -77,7 +79,7 @@ h4 {
 						<td colspan="6"><h3>ONDUTY REPORT</h3></td>
 					</tr>
 					<tr>
-						<th scope="col" colspan="4" style="text-align: center">INCHARGE
+						<th scope="col" colspan="4" style="text-align: center">FACULTY-IN-CHARGE
 							DETAILS</th>
 
 					</tr>
@@ -91,8 +93,8 @@ h4 {
 				<tbody>
 					<%
 					ReasonService reasonService = new ReasonService();
-								List<FacultyDetails> facultyData = reasonService.displayFacultyDetails(facultyId);
-								for (FacultyDetails faculty : facultyData) {
+					List<FacultyDetails> facultyData = reasonService.displayFacultyDetails(facultyId);
+					for (FacultyDetails faculty : facultyData) {
 					%>
 					<tr>
 						<td><%=faculty.getFacultyName()%></td>
@@ -119,10 +121,10 @@ h4 {
 				<tbody>
 					<%
 					List<ReportDetails> absentData = reasonService.displayOnDutyReport(facultyId);
-								if (absentData != null && !absentData.isEmpty()) {
-									int i = 1;
-									for (ReportDetails absent : absentData) {
-										i++;
+					if (absentData != null && !absentData.isEmpty()) {
+						int i = 1;
+						for (ReportDetails absent : absentData) {
+							i++;
 					%>
 					<tr>
 						<td><%=absent.getReason().getStudentRollNumber()%></td>

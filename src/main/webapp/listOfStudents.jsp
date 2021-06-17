@@ -56,6 +56,7 @@ p {
 
 				<thead class="thead-dark">
 					<tr>
+						<th scope="col">S. No.</th>
 						<th scope="col">STUDENT NAME</th>
 						<th scope="col">ROLL NUMBER</th>
 						<th scope="col">PERSONAL INFORMATION</th>
@@ -67,11 +68,12 @@ p {
 				<tbody>
 					<%
 					if (listStudents != null && !listStudents.isEmpty()) {
-						int i = 1;
+						int i = 0;
 						for (StudentDetails allInfo : listStudents) {
 							i++;
 					%>
 					<tr>
+						<td><%=i%></td>
 						<td><%=allInfo.getStudentName()%></td>
 
 						<td><%=allInfo.getStudentRollNumber()%></td>
@@ -90,8 +92,8 @@ p {
 						</td>
 						<td><a
 							href="StudentRemoveServlet?allInfo=<%=allInfo.getStudentRollNumber()%> "
-							onclick="return deleteConfirmation('<%=allInfo.getStudentRollNumber()%>')">DROP OUT
-						</a></td>
+							onclick="return deleteConfirmation('<%=allInfo.getStudentRollNumber()%>')">DROP
+								OUT </a></td>
 					</tr>
 					<%
 					}
@@ -122,7 +124,7 @@ p {
 			table = document.getElementById("myDetails");
 			tr = table.getElementsByTagName("tr");
 			for (i = 0; i < tr.length; i++) {
-				td = tr[i].getElementsByTagName("td")[1];
+				td = tr[i].getElementsByTagName("td")[2];
 				if (td) {
 					txtValue = td.textContent || td.innerText;
 					if (txtValue.toUpperCase().indexOf(filter) > -1) {
